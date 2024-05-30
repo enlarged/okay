@@ -27,12 +27,26 @@
             }
         }
 
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background: #000000;
+            background: linear-gradient(to bottom right, #101010, #1a1a1a, #101010, #1a1a1a, #101010);
+            background-size: 200% 200%;
+            animation: gradientShift 10s infinite linear;
             height: 100vh;
             margin: 0;
             overflow: hidden;
@@ -54,23 +68,23 @@
         h1 {
             font-family: Work Sans, sans-serif;
             font-size: 15mm;
-            color: white;
+            color: #e0e0e0;
             margin-bottom: 5px;
-            opacity: 0; /* Initially hidden */
+            opacity: 0;
             animation: fadeInText 2s forwards;
-            animation-delay: 1s; /* Delay text animation */
+            animation-delay: 1s;
         }
 
         h2 {
             font-family: Work Sans, sans-serif;
             font-size: 1.2em;
-            color: #92918f;
-            background: -webkit-linear-gradient(left, white, #92918f);
+            color: #bfbfbf;
+            background: -webkit-linear-gradient(left, #e0e0e0, #bfbfbf);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            opacity: 0; /* Initially hidden */
+            opacity: 0;
             animation: fadeInText 2s forwards;
-            animation-delay: 1s; /* Delay text animation */
+            animation-delay: 1s;
         }
 
         .redirects {
@@ -78,7 +92,7 @@
             margin-top: 20px;
             opacity: 0; /* Initially hidden */
             animation: fadeInText 2s forwards;
-            animation-delay: 1s; /* Delay text animation */
+            animation-delay: 1s;
         }
 
         ul.horz-list {
@@ -95,13 +109,14 @@
         }
 
         ul.horz-list li a {
-            position: relative;
-            border-radius: 8px;
+            display: inline-block;
+            border-radius: 15px;
+            padding: 8px 15px;
             color: white;
             text-decoration: none;
             font-family: Work Sans, sans-serif;
             font-size: 6mm;
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: #6e6e6e;
             margin-right: 5px;
         }
 
@@ -111,7 +126,7 @@
 
         ul.horz-list li a:hover {
             color: #b8b8b8;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: #4c4c4c;
         }
 
         ul.horz-list li a img {
@@ -123,15 +138,15 @@
 
 <body>
     <div class="avatar">
-        <img src="https://meow.png">
+        <img src="https://cdn.discordapp.com/attachments/1241626414675922954/1245861043960283176/avatar.png?ex=665a4a03&is=6658f883&hm=3cbeebf434ccc47bbbca158eb72ea2efe91eda27ac1e6d0055536ec433b8a883&">
     </div>
     <h1>okay</h1>
     <h2>serving 300+ users and 4+ servers</h2>
     <div class="redirects">
         <ul class="horz-list">
-            <li><a href="https://lone.rocks/help"><img src="https://lains.win/discord.png" alt="Commands"></a></li>
-            <li><a href="https://docs.lone.rocks/"><img src="https://lains.win/snapchat.png" alt="Docs"></a></li>
-            <li><a href="https://discord.gg/okay/"><img src="https://lains.win/tiktok.png" alt="Support"></a></li>
+            <li><a href="https://lone.rocks/help"><img src="https://cdn.discordapp.com/attachments/1241626414675922954/1245860519982927945/terminal.png?ex=665a4986&is=6658f806&hm=1ee43f9c7f8dba4575d97925f128c892df1d7f9ef19804539f4fc70f045e71cb&" alt="cmds"></a></li>
+            <li><a href="https://docs.lone.rocks/"><img src="https://cdn.discordapp.com/attachments/1241626414675922954/1245860730939379804/book-of-black-cover-closed.png?ex=665a49b9&is=6658f839&hm=6412e9a5926a247eb2c43d5b7eb86823fd2c3fda5a4d1b2a019f342c527d331f&" alt="docs"></a></li>
+            <li><a href="https://discord.gg/okay/"><img src="https://cdn.discordapp.com/attachments/1241626414675922954/1245860902712905849/game.png?ex=665a49e2&is=6658f862&hm=1ca254df92ed32ba1a1b8619aa889513556fbca31a5418f9139f64279940a1ec" alt="discord"></a></li>
         </ul>
     </div>
 
@@ -141,7 +156,7 @@
             elements.forEach(function(element) {
                 element.style.opacity = '1';
             });
-        }, 2500); // Adjusted timeout to match avatar animation duration
+        }, 2500);
     </script>
 </body>
 
