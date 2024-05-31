@@ -123,7 +123,7 @@
 <body>
 <div class="tab-container">
     <button class="tab active" data-module="all" onclick="showModule('all')">All <span class="command-count">93</span></button>
-<button class="tab" data-module="fun" onclick="showModule('fun')">fun <span class="command-count">7</span></button><button class="tab" data-module="information" onclick="showModule('information')">information <span class="command-count">18</span></button><button class="tab" data-module="lastfm" onclick="showModule('lastfm')">lastfm <span class="command-count">5</span></button><button class="tab" data-module="miscellaneous" onclick="showModule('miscellaneous')">miscellaneous <span class="command-count">13</span></button><button class="tab" data-module="moderation" onclick="showModule('moderation')">moderation <span class="command-count">6</span></button><button class="tab" data-module="servers" onclick="showModule('servers')">servers <span class="command-count">9</span></button><button class="tab" data-module="socials" onclick="showModule('socials')">socials <span class="command-count">7</span></button><button class="tab" data-module="utility" onclick="showModule('utility')">utility <span class="command-count">14</span></button></div>
+<button class="tab" data-module="fun" onclick="showModule('fun')">fun <span class="command-count">7</span></button><button class="tab" data-module="information" onclick="showModule('information')">information <span class="command-count">18</span></button><button class="tab" data-module="miscellaneous" onclick="showModule('miscellaneous')">miscellaneous <span class="command-count">18</span></button><button class="tab" data-module="moderation" onclick="showModule('moderation')">moderation <span class="command-count">6</span></button><button class="tab" data-module="spotify" onclick="showModule('spotify')">spotify <span class="command-count">2</span></button><button class="tab" data-module="music" onclick="showModule('music')">music <span class="command-count">6</span></button><button class="tab" data-module="servers" onclick="showModule('servers')">servers <span class="command-count">9</span></button><button class="tab" data-module="utility" onclick="showModule('utility')">utility <span class="command-count">14</span></button></div>
 <div class="commands-container">
 <div class="category active" id="all">
             <div class="command-box">
@@ -319,43 +319,11 @@
             </div>
         
             <div class="command-box">
-                <h3>lastfm</h3>
-                <p>Interact with your music</p>
-                <p>Aliases: lf</p>
-                <hr>
-                <p>Usage: lastfm [set|reset] <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>nowplaying</h3>
-                <p>Shows your currently playing song</p>
-                <p>Aliases: fm,np,song</p>
-                <hr>
-                <p>Usage: nowplaying</p>
-            </div>
-        
-            <div class="command-box">
-                <h3>recent</h3>
-                <p>Shows your most recent tracks</p>
+                <h3>anime</h3>
+                <p>Search an Anime on Kitsu.io</p>
                 <p>Aliases: none</p>
                 <hr>
-                <p>Usage: recent</p>
-            </div>
-        
-            <div class="command-box">
-                <h3>recommend</h3>
-                <p>Recommend a song based on your LastFM history</p>
-                <p>Aliases: rec</p>
-                <hr>
-                <p>Usage: recommend</p>
-            </div>
-        
-            <div class="command-box">
-                <h3>topartists</h3>
-                <p>View your top artists</p>
-                <p>Aliases: topar,ta</p>
-                <hr>
-                <p>Usage: topartists</p>
+                <p>Usage: anime <title></p>
             </div>
         
             <div class="command-box">
@@ -364,6 +332,14 @@
                 <p>Aliases: playstore,app</p>
                 <hr>
                 <p>Usage: appstore <query></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>cashapp</h3>
+                <p>View a CashApp profile</p>
+                <p>Aliases: ca</p>
+                <hr>
+                <p>Usage: cashapp <username></p>
             </div>
         
             <div class="command-box">
@@ -391,6 +367,14 @@
             </div>
         
             <div class="command-box">
+                <h3>github</h3>
+                <p>Get information from a github profile</p>
+                <p>Aliases: git,gh</p>
+                <hr>
+                <p>Usage: github <username></p>
+            </div>
+        
+            <div class="command-box">
                 <h3>imdb</h3>
                 <p>Get information on a series</p>
                 <p>Aliases: movie,series</p>
@@ -399,11 +383,11 @@
             </div>
         
             <div class="command-box">
-                <h3>itunes</h3>
-                <p>Search iTunes for a song</p>
-                <p>Aliases: itu</p>
+                <h3>instagram</h3>
+                <p>View an instagram profile</p>
+                <p>Aliases: insta,ig</p>
                 <hr>
-                <p>Usage: itunes <query></p>
+                <p>Usage: instagram <username></p>
             </div>
         
             <div class="command-box">
@@ -423,19 +407,11 @@
             </div>
         
             <div class="command-box">
-                <h3>soundcloud</h3>
-                <p>Search for a song on SoundCloud</p>
+                <h3>snapchat</h3>
+                <p>View a snapchat profile</p>
                 <p>Aliases: sc</p>
                 <hr>
-                <p>Usage: soundcloud <query></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>spotify</h3>
-                <p>Search spotify for a song</p>
-                <p>Aliases: sp</p>
-                <hr>
-                <p>Usage: spotify <query></p>
+                <p>Usage: snapchat <username></p>
             </div>
         
             <div class="command-box">
@@ -444,6 +420,22 @@
                 <p>Aliases: game</p>
                 <hr>
                 <p>Usage: steam <game></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>tiktok</h3>
+                <p>View a tiktok profile</p>
+                <p>Aliases: tt</p>
+                <hr>
+                <p>Usage: tiktok <username></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>twitter</h3>
+                <p>View a twitter profile</p>
+                <p>Aliases: x</p>
+                <hr>
+                <p>Usage: twitter <username></p>
             </div>
         
             <div class="command-box">
@@ -460,6 +452,14 @@
                 <p>Aliases: xb,xbl</p>
                 <hr>
                 <p>Usage: xbox <username></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>youtube</h3>
+                <p>Searches YouTube for video query</p>
+                <p>Aliases: yt</p>
+                <hr>
+                <p>Usage: undefined</p>
             </div>
         
             <div class="command-box">
@@ -508,6 +508,70 @@
                 <p>Aliases: uses</p>
                 <hr>
                 <p>Usage: vanityuses</p>
+            </div>
+        
+            <div class="command-box">
+                <h3>itunes</h3>
+                <p>Search iTunes for a song</p>
+                <p>Aliases: itu</p>
+                <hr>
+                <p>Usage: itunes <query></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>lastfm</h3>
+                <p>Interact with your music</p>
+                <p>Aliases: lf</p>
+                <hr>
+                <p>Usage: lastfm [set|reset] <username></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>nowplaying</h3>
+                <p>Shows your currently playing song</p>
+                <p>Aliases: fm,np,song</p>
+                <hr>
+                <p>Usage: nowplaying</p>
+            </div>
+        
+            <div class="command-box">
+                <h3>recent</h3>
+                <p>Shows your most recent tracks</p>
+                <p>Aliases: none</p>
+                <hr>
+                <p>Usage: recent</p>
+            </div>
+        
+            <div class="command-box">
+                <h3>recommend</h3>
+                <p>Recommend a song based on your LastFM history</p>
+                <p>Aliases: rec</p>
+                <hr>
+                <p>Usage: recommend</p>
+            </div>
+        
+            <div class="command-box">
+                <h3>soundcloud</h3>
+                <p>Search for a song on SoundCloud</p>
+                <p>Aliases: sc</p>
+                <hr>
+                <p>Usage: soundcloud <query></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>spotify</h3>
+                <p>Search spotify for a song</p>
+                <p>Aliases: sp</p>
+                <hr>
+                <p>Usage: spotify <query></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>topartists</h3>
+                <p>View your top artists</p>
+                <p>Aliases: topar,ta</p>
+                <hr>
+                <p>Usage: topartists</p>
             </div>
         
             <div class="command-box">
@@ -580,62 +644,6 @@
                 <p>Aliases: none</p>
                 <hr>
                 <p>Usage: ticket channel #tickets</p>
-            </div>
-        
-            <div class="command-box">
-                <h3>cashapp</h3>
-                <p>View a CashApp profile</p>
-                <p>Aliases: ca</p>
-                <hr>
-                <p>Usage: cashapp <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>github</h3>
-                <p>Get information from a github profile</p>
-                <p>Aliases: git,gh</p>
-                <hr>
-                <p>Usage: github <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>instagram</h3>
-                <p>View an instagram profile</p>
-                <p>Aliases: insta,ig</p>
-                <hr>
-                <p>Usage: instagram <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>snapchat</h3>
-                <p>View a snapchat profile</p>
-                <p>Aliases: sc</p>
-                <hr>
-                <p>Usage: snapchat <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>tiktok</h3>
-                <p>View a tiktok profile</p>
-                <p>Aliases: tt</p>
-                <hr>
-                <p>Usage: tiktok <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>twitter</h3>
-                <p>View a twitter profile</p>
-                <p>Aliases: x</p>
-                <hr>
-                <p>Usage: twitter <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>youtube</h3>
-                <p>Searches YouTube for video query</p>
-                <p>Aliases: yt</p>
-                <hr>
-                <p>Usage: undefined</p>
             </div>
         
             <div class="command-box">
@@ -957,53 +965,29 @@
                 <hr>
                 <p>Usage: enlarge <emoji></p>
             </div>
-        </div><div class="category" id="lastfm">
+        </div><div class="category" id="miscellaneous">
             <div class="command-box">
-                <h3>lastfm</h3>
-                <p>Interact with your music</p>
-                <p>Aliases: lf</p>
-                <hr>
-                <p>Usage: lastfm [set|reset] <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>nowplaying</h3>
-                <p>Shows your currently playing song</p>
-                <p>Aliases: fm,np,song</p>
-                <hr>
-                <p>Usage: nowplaying</p>
-            </div>
-        
-            <div class="command-box">
-                <h3>recent</h3>
-                <p>Shows your most recent tracks</p>
+                <h3>anime</h3>
+                <p>Search an Anime on Kitsu.io</p>
                 <p>Aliases: none</p>
                 <hr>
-                <p>Usage: recent</p>
+                <p>Usage: anime <title></p>
             </div>
         
-            <div class="command-box">
-                <h3>recommend</h3>
-                <p>Recommend a song based on your LastFM history</p>
-                <p>Aliases: rec</p>
-                <hr>
-                <p>Usage: recommend</p>
-            </div>
-        
-            <div class="command-box">
-                <h3>topartists</h3>
-                <p>View your top artists</p>
-                <p>Aliases: topar,ta</p>
-                <hr>
-                <p>Usage: topartists</p>
-            </div>
-        </div><div class="category" id="miscellaneous">
             <div class="command-box">
                 <h3>appstore</h3>
                 <p>View an app on the app store</p>
                 <p>Aliases: playstore,app</p>
                 <hr>
                 <p>Usage: appstore <query></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>cashapp</h3>
+                <p>View a CashApp profile</p>
+                <p>Aliases: ca</p>
+                <hr>
+                <p>Usage: cashapp <username></p>
             </div>
         
             <div class="command-box">
@@ -1031,6 +1015,14 @@
             </div>
         
             <div class="command-box">
+                <h3>github</h3>
+                <p>Get information from a github profile</p>
+                <p>Aliases: git,gh</p>
+                <hr>
+                <p>Usage: github <username></p>
+            </div>
+        
+            <div class="command-box">
                 <h3>imdb</h3>
                 <p>Get information on a series</p>
                 <p>Aliases: movie,series</p>
@@ -1039,11 +1031,11 @@
             </div>
         
             <div class="command-box">
-                <h3>itunes</h3>
-                <p>Search iTunes for a song</p>
-                <p>Aliases: itu</p>
+                <h3>instagram</h3>
+                <p>View an instagram profile</p>
+                <p>Aliases: insta,ig</p>
                 <hr>
-                <p>Usage: itunes <query></p>
+                <p>Usage: instagram <username></p>
             </div>
         
             <div class="command-box">
@@ -1063,19 +1055,11 @@
             </div>
         
             <div class="command-box">
-                <h3>soundcloud</h3>
-                <p>Search for a song on SoundCloud</p>
+                <h3>snapchat</h3>
+                <p>View a snapchat profile</p>
                 <p>Aliases: sc</p>
                 <hr>
-                <p>Usage: soundcloud <query></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>spotify</h3>
-                <p>Search spotify for a song</p>
-                <p>Aliases: sp</p>
-                <hr>
-                <p>Usage: spotify <query></p>
+                <p>Usage: snapchat <username></p>
             </div>
         
             <div class="command-box">
@@ -1084,6 +1068,22 @@
                 <p>Aliases: game</p>
                 <hr>
                 <p>Usage: steam <game></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>tiktok</h3>
+                <p>View a tiktok profile</p>
+                <p>Aliases: tt</p>
+                <hr>
+                <p>Usage: tiktok <username></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>twitter</h3>
+                <p>View a twitter profile</p>
+                <p>Aliases: x</p>
+                <hr>
+                <p>Usage: twitter <username></p>
             </div>
         
             <div class="command-box">
@@ -1100,6 +1100,14 @@
                 <p>Aliases: xb,xbl</p>
                 <hr>
                 <p>Usage: xbox <username></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>youtube</h3>
+                <p>Searches YouTube for video query</p>
+                <p>Aliases: yt</p>
+                <hr>
+                <p>Usage: undefined</p>
             </div>
         </div><div class="category" id="moderation">
             <div class="command-box">
@@ -1148,6 +1156,70 @@
                 <p>Aliases: uses</p>
                 <hr>
                 <p>Usage: vanityuses</p>
+            </div>
+        </div><div class="category" id="spotify">
+            <div class="command-box">
+                <h3>itunes</h3>
+                <p>Search iTunes for a song</p>
+                <p>Aliases: itu</p>
+                <hr>
+                <p>Usage: itunes <query></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>spotify</h3>
+                <p>Search spotify for a song</p>
+                <p>Aliases: sp</p>
+                <hr>
+                <p>Usage: spotify <query></p>
+            </div>
+        </div><div class="category" id="music">
+            <div class="command-box">
+                <h3>lastfm</h3>
+                <p>Interact with your music</p>
+                <p>Aliases: lf</p>
+                <hr>
+                <p>Usage: lastfm [set|reset] <username></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>nowplaying</h3>
+                <p>Shows your currently playing song</p>
+                <p>Aliases: fm,np,song</p>
+                <hr>
+                <p>Usage: nowplaying</p>
+            </div>
+        
+            <div class="command-box">
+                <h3>recent</h3>
+                <p>Shows your most recent tracks</p>
+                <p>Aliases: none</p>
+                <hr>
+                <p>Usage: recent</p>
+            </div>
+        
+            <div class="command-box">
+                <h3>recommend</h3>
+                <p>Recommend a song based on your LastFM history</p>
+                <p>Aliases: rec</p>
+                <hr>
+                <p>Usage: recommend</p>
+            </div>
+        
+            <div class="command-box">
+                <h3>soundcloud</h3>
+                <p>Search for a song on SoundCloud</p>
+                <p>Aliases: sc</p>
+                <hr>
+                <p>Usage: soundcloud <query></p>
+            </div>
+        
+            <div class="command-box">
+                <h3>topartists</h3>
+                <p>View your top artists</p>
+                <p>Aliases: topar,ta</p>
+                <hr>
+                <p>Usage: topartists</p>
             </div>
         </div><div class="category" id="servers">
             <div class="command-box">
@@ -1220,62 +1292,6 @@
                 <p>Aliases: none</p>
                 <hr>
                 <p>Usage: ticket channel #tickets</p>
-            </div>
-        </div><div class="category" id="socials">
-            <div class="command-box">
-                <h3>cashapp</h3>
-                <p>View a CashApp profile</p>
-                <p>Aliases: ca</p>
-                <hr>
-                <p>Usage: cashapp <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>github</h3>
-                <p>Get information from a github profile</p>
-                <p>Aliases: git,gh</p>
-                <hr>
-                <p>Usage: github <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>instagram</h3>
-                <p>View an instagram profile</p>
-                <p>Aliases: insta,ig</p>
-                <hr>
-                <p>Usage: instagram <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>snapchat</h3>
-                <p>View a snapchat profile</p>
-                <p>Aliases: sc</p>
-                <hr>
-                <p>Usage: snapchat <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>tiktok</h3>
-                <p>View a tiktok profile</p>
-                <p>Aliases: tt</p>
-                <hr>
-                <p>Usage: tiktok <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>twitter</h3>
-                <p>View a twitter profile</p>
-                <p>Aliases: x</p>
-                <hr>
-                <p>Usage: twitter <username></p>
-            </div>
-        
-            <div class="command-box">
-                <h3>youtube</h3>
-                <p>Searches YouTube for video query</p>
-                <p>Aliases: yt</p>
-                <hr>
-                <p>Usage: undefined</p>
             </div>
         </div><div class="category" id="utility">
             <div class="command-box">
