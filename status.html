@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lain Bot Status</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&family=Work+Sans:wght@100;400&display=swap");
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Work Sans', sans-serif;
+            color: #fff;
+            margin: 0;
+            background: linear-gradient(to bottom right, #101010, #1a1a1a, #101010, #1a1a1a, #101010);
+            background-size: 400% 400%;
+            animation: gradientShift 15s infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0c0c0c;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar .left,
+        .navbar .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .left img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .left span {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .navbar .middle button {
+            margin: 0 10px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navbar .middle button:hover {
+            background-color: #333;
+        }
+
+        .navbar .right button {
+            background-color: #7289da;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navbar .right button:hover {
+            background-color: #5a6fb5;
+        }
+
+        .status-box {
+            background-color: #0c0c0c;
+            border-radius: 8px;
+            text-align: center;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .status-box h3 {
+            margin: 10px 0;
+        }
+
+        .status-box p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+
+        .separator {
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="left">
+            <img src="https://okaybot.xyz/9097cdec2d468390dfa45eac8756849f.jpg" alt="Bot Avatar">
+            <span>okay</span>
+        </div>
+        <div class="middle">
+            <button onclick="location.href='#status'">Status</button>
+            <button onclick="location.href='#commands'">Commands</button>
+            <button onclick="location.href='#faq'">FAQ</button>
+        </div>
+        <div class="right">
+            <button onclick="window.location.href='https://discord.gg/okay'">Discord</button>
+        </div>
+    </div>
+    <div class="status-box">
+        <h3>Shard 0</h3>
+        <p>Operational</p>
+        <p>Latency: 20ms</p>
+        <p>Servers: 63</p>
+        <p>Users: 57,321</p>
+    </div>
+</body>
+</html>
