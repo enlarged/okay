@@ -15,22 +15,80 @@
             font-family: 'Work Sans', sans-serif;
             color: #fff;
             margin: 0;
-            padding: 20px; /* Add padding for better spacing */
+            padding: 20px;
             background: linear-gradient(to bottom right, #101010, #1a1a1a, #101010, #1a1a1a, #101010);
-            background-size: 200% 200%;
-            animation: gradientShift 10s infinite linear;
+            background-size: 400% 400%;
+            animation: gradientShift 15s infinite alternate;
         }
 
         @keyframes gradientShift {
             0% {
                 background-position: 0% 0%;
             }
-            50% {
+            100% {
                 background-position: 100% 100%;
             }
-            100% {
-                background-position: 0% 0%;
-            }
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0c0c0c;
+            padding: 10px 20px;
+        }
+
+        .navbar .left,
+        .navbar .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .left img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .left span {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .navbar .middle button {
+            margin: 0 10px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navbar .middle button:hover {
+            background-color: #333;
+        }
+
+        .navbar .right button {
+            background-color: #7289da;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navbar .right button:hover {
+            background-color: #5a6fb5;
+        }
+
+        .separator {
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            margin: 20px 0;
         }
 
         .command-box {
@@ -40,7 +98,7 @@
             text-align: center;
             margin: 10px;
             padding: 10px;
-            flex: 0 0 calc(33.33% - 20px); /* Three command boxes per row */
+            flex: 0 0 calc(33.33% - 20px);
             box-sizing: border-box;
         }
 
@@ -66,14 +124,27 @@
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <div class="left">
+            <img src="https://okaybot.xyz/9097cdec2d468390dfa45eac8756849f.jpg" alt="Bot Avatar">
+            <span>okay</span>
+        </div>
+        <div class="middle">
+            <button onclick="location.href='https://okaybot.xyz/status'">Status</button>
+            <button onclick="location.href='https://okaybot.xyz/commands'">Commands</button>
+            <button onclick="location.href='https://okaybot.xyz/faq'">FAQ</button>
+        </div>
+        <div class="right">
+            <button onclick="window.location.href='https://discord.gg/okay'">Discord</button>
+        </div>
+    </div>
+    <div class="separator"></div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('cuddle')">
     <h3>cuddle</h3>
     <p>Cuddle with a member</p>
     <p>Aliases: none</p>
-    <hr>
-    <p>Usage: cuddle <member></p>
 </div>
 
 <div class="command-box">
@@ -81,8 +152,6 @@
     <h3>divorce</h3>
     <p>Divorce your partner</p>
     <p>Aliases: dvc</p>
-    <hr>
-    <p>Usage: divorce</p>
 </div>
 
 <div class="command-box">
@@ -90,8 +159,6 @@
     <h3>joke</h3>
     <p>Get a random joke</p>
     <p>Aliases: jk</p>
-    <hr>
-    <p>Usage: joke</p>
 </div>
 
 <div class="command-box">
@@ -99,8 +166,6 @@
     <h3>kiss</h3>
     <p>Kiss with a member</p>
     <p>Aliases: none</p>
-    <hr>
-    <p>Usage: kiss <member></p>
 </div>
 
 <div class="command-box">
@@ -108,8 +173,6 @@
     <h3>marriage</h3>
     <p>See who a user is married to</p>
     <p>Aliases: married</p>
-    <hr>
-    <p>Usage: marriage <member></p>
 </div>
 
 <div class="command-box">
@@ -117,8 +180,6 @@
     <h3>marry</h3>
     <p>Marry a server member</p>
     <p>Aliases: none</p>
-    <hr>
-    <p>Usage: marry <member></p>
 </div>
 
 <div class="command-box">
@@ -126,8 +187,6 @@
     <h3>uwuify</h3>
     <p>Uwuify a string of text</p>
     <p>Aliases: uwu</p>
-    <hr>
-    <p>Usage: uwuify [text]</p>
 </div>
 
 <div class="command-box">
@@ -135,8 +194,6 @@
     <h3>about</h3>
     <p>Shows information about the bo</p>
     <p>Aliases: botinfo</p>
-    <hr>
-    <p>Usage: botinfo</p>
 </div>
 
 <div class="command-box">
@@ -144,8 +201,6 @@
     <h3>avatar</h3>
     <p>View a user's avatar</p>
     <p>Aliases: av</p>
-    <hr>
-    <p>Usage: avatar <user></p>
 </div>
 
 <div class="command-box">
@@ -153,8 +208,6 @@
     <h3>banner</h3>
     <p>View a user's banner</p>
     <p>Aliases: none</p>
-    <hr>
-    <p>Usage: banner <user></p>
 </div>
 
 <div class="command-box">
@@ -162,17 +215,13 @@
     <h3>firstmembers</h3>
     <p>Shows the first members to join the server</p>
     <p>Aliases: recent</p>
-    <hr>
-    <p>Usage: recentmembers</p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('help')">
     <h3>help</h3>
     <p>Displays a list of available commands or provides information about a specific command.</p>
-    <p>Aliases: commands,h,cmds</p>
-    <hr>
-    <p>Usage: help [command | module]</p>
+    <p>Aliases: commands, h, cmds</p>
 </div>
 
 <div class="command-box">
@@ -180,17 +229,13 @@
     <h3>invite</h3>
     <p>Get the invite link for the bot.</p>
     <p>Aliases: inv</p>
-    <hr>
-    <p>Usage: invite</p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('membercount')">
     <h3>membercount</h3>
     <p>View the server's member count</p>
-    <p>Aliases: mc,members</p>
-    <hr>
-    <p>Usage: membercount</p>
+    <p>Aliases: mc, members</p>
 </div>
 
 <div class="command-box">
@@ -198,8 +243,6 @@
     <h3>oldestmembers</h3>
     <p>Shows the oldest members in the server.</p>
     <p>Aliases: oldest</p>
-    <hr>
-    <p>Usage: oldest</p>
 </div>
 
 <div class="command-box">
@@ -207,8 +250,6 @@
     <h3>ping</h3>
     <p>Get the bot's latency to discord</p>
     <p>Aliases: ws</p>
-    <hr>
-    <p>Usage: ping</p>
 </div>
 
 <div class="command-box">
@@ -216,26 +257,20 @@
     <h3>roles</h3>
     <p>Shows all roles in the server</p>
     <p>Aliases: role</p>
-    <hr>
-    <p>Usage: roles</p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('serverbanner')">
     <h3>serverbanner</h3>
     <p>Show the server banner.</p>
-    <p>Aliases: banner,sbnr</p>
-    <hr>
-    <p>Usage: serverbanner <invite></p>
+    <p>Aliases: banner, sbnr</p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('servericon')">
     <h3>servericon</h3>
     <p>Show the server icon.</p>
-    <p>Aliases: icon,sicon</p>
-    <hr>
-    <p>Usage: servericon <invite></p>
+    <p>Aliases: icon, sicon</p>
 </div>
 
 <div class="command-box">
@@ -243,17 +278,13 @@
     <h3>serverinfo</h3>
     <p>Return server information</p>
     <p>Aliases: si</p>
-    <hr>
-    <p>Usage: serverinfo</p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('serversplash')">
     <h3>serversplash</h3>
     <p>Show the server splash.</p>
-    <p>Aliases: splash,sspl</p>
-    <hr>
-    <p>Usage: serversplash <invite></p>
+    <p>Aliases: splash, sspl</p>
 </div>
 
 <div class="command-box">
@@ -261,8 +292,6 @@
     <h3>subcommands</h3>
     <p>Shows the subcommands of a command</p>
     <p>Aliases: none</p>
-    <hr>
-    <p>Usage: subcommands <command></p>
 </div>
 
 <div class="command-box">
@@ -270,8 +299,6 @@
     <h3>uptime</h3>
     <p>Shows bot uptime.</p>
     <p>Aliases: none</p>
-    <hr>
-    <p>Usage: undefined</p>
 </div>
 
 <div class="command-box">
@@ -279,8 +306,13 @@
     <h3>usage</h3>
     <p>Shows the usage of a command</p>
     <p>Aliases: none</p>
-    <hr>
-    <p>Usage: usage <command></p>
+</div>
+
+<div class="command-box">
+    <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('jumbo')">
+    <h3>jumbo</h3>
+    <p>Enlarge an emoji</p>
+    <p>Aliases: e, enlarge</p>
 </div>
 
 <div class="command-box">
@@ -288,17 +320,13 @@
     <h3>anime</h3>
     <p>Search an Anime on Kitsu.io</p>
     <p>Aliases: none</p>
-    <hr>
-    <p>Usage: anime <title></p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('appstore')">
     <h3>appstore</h3>
     <p>View an app on the app store</p>
-    <p>Aliases: playstore,app</p>
-    <hr>
-    <p>Usage: appstore <query></p>
+    <p>Aliases: playstore, app</p>
 </div>
 
 <div class="command-box">
@@ -306,26 +334,20 @@
     <h3>cashapp</h3>
     <p>View a CashApp profile</p>
     <p>Aliases: ca</p>
-    <hr>
-    <p>Usage: cashapp <username></p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('fortnite')">
     <h3>fortnite</h3>
     <p>View fortnite related information</p>
-    <p>Aliases: fort,fn</p>
-    <hr>
-    <p>Usage: fortnite [lookup|shop] <cosmetic></p>
+    <p>Aliases: fort, fn</p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('gemini')">
     <h3>gemini</h3>
     <p>Generate text with prompts</p>
-    <p>Aliases: gpt,ask,chatgpt</p>
-    <hr>
-    <p>Usage: gemini <prompt></p>
+    <p>Aliases: gpt, ask, chatgpt</p>
 </div>
 
 <div class="command-box">
@@ -333,35 +355,27 @@
     <h3>giphy</h3>
     <p>Search Giphy for a GIF.</p>
     <p>Aliases: gif</p>
-    <hr>
-    <p>Usage: giphy <query></p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('github')">
     <h3>github</h3>
     <p>Get information from a github profile</p>
-    <p>Aliases: git,gh</p>
-    <hr>
-    <p>Usage: github <username></p>
+    <p>Aliases: git, gh</p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('imdb')">
     <h3>imdb</h3>
     <p>Get information on a series</p>
-    <p>Aliases: movie,series</p>
-    <hr>
-    <p>Usage: imdb <query></p>
+    <p>Aliases: movie, series</p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('instagram')">
     <h3>instagram</h3>
     <p>View an instagram profile</p>
-    <p>Aliases: insta,ig</p>
-    <hr>
-    <p>Usage: instagram <username></p>
+    <p>Aliases: insta, ig</p>
 </div>
 
 <div class="command-box">
@@ -369,8 +383,6 @@
     <h3>playstation</h3>
     <p>Search for a PlayStation profile</p>
     <p>Aliases: psn</p>
-    <hr>
-    <p>Usage: playstation [username]</p>
 </div>
 
 <div class="command-box">
@@ -378,8 +390,6 @@
     <h3>pokemon</h3>
     <p>View information about a Pokémon</p>
     <p>Aliases: pokedex</p>
-    <hr>
-    <p>Usage: pokedex <pokemon></p>
 </div>
 
 <div class="command-box">
@@ -387,8 +397,6 @@
     <h3>snapchat</h3>
     <p>View a snapchat profile</p>
     <p>Aliases: sc</p>
-    <hr>
-    <p>Usage: snapchat <username></p>
 </div>
 
 <div class="command-box">
@@ -396,8 +404,6 @@
     <h3>steam</h3>
     <p>Search Steam for a game</p>
     <p>Aliases: game</p>
-    <hr>
-    <p>Usage: steam <game></p>
 </div>
 
 <div class="command-box">
@@ -405,8 +411,6 @@
     <h3>tiktok</h3>
     <p>View a tiktok profile</p>
     <p>Aliases: tt</p>
-    <hr>
-    <p>Usage: tiktok <username></p>
 </div>
 
 <div class="command-box">
@@ -414,8 +418,6 @@
     <h3>twitter</h3>
     <p>View a twitter profile</p>
     <p>Aliases: x</p>
-    <hr>
-    <p>Usage: twitter <username></p>
 </div>
 
 <div class="command-box">
@@ -423,17 +425,13 @@
     <h3>valorant</h3>
     <p>Get information on a Valorant profile</p>
     <p>Aliases: val</p>
-    <hr>
-    <p>Usage: valorant [username]</p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('xbox')">
     <h3>xbox</h3>
     <p>Gets profile information on the given Xbox gamertag</p>
-    <p>Aliases: xb,xbl</p>
-    <hr>
-    <p>Usage: xbox <username></p>
+    <p>Aliases: xb, xbl</p>
 </div>
 
 <div class="command-box">
@@ -441,8 +439,6 @@
     <h3>youtube</h3>
     <p>Searches YouTube for video query</p>
     <p>Aliases: yt</p>
-    <hr>
-    <p>Usage: undefined</p>
 </div>
 
 <div class="command-box">
@@ -450,17 +446,13 @@
     <h3>banlist</h3>
     <p>Shows all banned users in the server</p>
     <p>Aliases: bans</p>
-    <hr>
-    <p>Usage: banlist</p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('cleanup')">
     <h3>cleanup</h3>
     <p>Delete a certain amount of messages from bots</p>
-    <p>Aliases: clear,bc</p>
-    <hr>
-    <p>Usage: cleanup <amount></p>
+    <p>Aliases: clear, bc</p>
 </div>
 
 <div class="command-box">
@@ -468,8 +460,6 @@
     <h3>selfpurge</h3>
     <p>Delete 100 of your own messages</p>
     <p>Aliases: spurge</p>
-    <hr>
-    <p>Usage: selfpurge</p>
 </div>
 
 <div class="command-box">
@@ -477,8 +467,6 @@
     <h3>slowmode</h3>
     <p>Set the slowmode of a channel</p>
     <p>Aliases: sm</p>
-    <hr>
-    <p>Usage: slowmode 10s</p>
 </div>
 
 <div class="command-box">
@@ -486,8 +474,6 @@
     <h3>striproles</h3>
     <p>Strip all of a user's roles</p>
     <p>Aliases: strip</p>
-    <hr>
-    <p>Usage: striproles <member></p>
 </div>
 
 <div class="command-box">
@@ -495,8 +481,6 @@
     <h3>vanityuses</h3>
     <p>Check how many uses your vanity has</p>
     <p>Aliases: uses</p>
-    <hr>
-    <p>Usage: vanityuses</p>
 </div>
 
 <div class="command-box">
@@ -504,8 +488,6 @@
     <h3>itunes</h3>
     <p>Search iTunes for a song</p>
     <p>Aliases: itu</p>
-    <hr>
-    <p>Usage: itunes <query></p>
 </div>
 
 <div class="command-box">
@@ -513,17 +495,13 @@
     <h3>lastfm</h3>
     <p>Interact with your music</p>
     <p>Aliases: lf</p>
-    <hr>
-    <p>Usage: lastfm [set|reset] <username></p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('nowplaying')">
     <h3>nowplaying</h3>
     <p>Shows your currently playing song</p>
-    <p>Aliases: fm,np,song</p>
-    <hr>
-    <p>Usage: nowplaying</p>
+    <p>Aliases: fm, np, song</p>
 </div>
 
 <div class="command-box">
@@ -531,8 +509,6 @@
     <h3>recent</h3>
     <p>Shows your most recent tracks</p>
     <p>Aliases: none</p>
-    <hr>
-    <p>Usage: recent</p>
 </div>
 
 <div class="command-box">
@@ -540,8 +516,6 @@
     <h3>recommend</h3>
     <p>Recommend a song based on your LastFM history</p>
     <p>Aliases: rec</p>
-    <hr>
-    <p>Usage: recommend</p>
 </div>
 
 <div class="command-box">
@@ -549,8 +523,6 @@
     <h3>soundcloud</h3>
     <p>Search for a song on SoundCloud</p>
     <p>Aliases: sc</p>
-    <hr>
-    <p>Usage: soundcloud <query></p>
 </div>
 
 <div class="command-box">
@@ -558,17 +530,13 @@
     <h3>spotify</h3>
     <p>Search spotify for a song</p>
     <p>Aliases: sp</p>
-    <hr>
-    <p>Usage: spotify <query></p>
 </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('topartists')">
     <h3>topartists</h3>
     <p>View your top artists</p>
-    <p>Aliases: topar,ta</p>
-    <hr>
-    <p>Usage: topartists</p>
+    <p>Aliases: topar, ta</p>
 </div>
 
 <div class="command-box">
@@ -576,8 +544,6 @@
     <h3>autobanner</h3>
     <p>Automatically sends banners to a channel</p>
     <p>Aliases: banners</p>
-    <hr>
-    <p>Usage: autobanner [set|reset] <channel></p>
 </div>
 
 <div class="command-box">
@@ -585,8 +551,6 @@
     <h3>autopfp</h3>
     <p>Automatically sends pfps to a channel</p>
     <p>Aliases: pfps</p>
-    <hr>
-    <p>Usage: autopfp [set|reset] <channel></p>
 </div>
 
 <div class="command-box">
@@ -594,8 +558,6 @@
     <h3>backup</h3>
     <p>Backup the server</p>
     <p>Aliases: backups</p>
-    <hr>
-    <p>Usage: backup [save|load|remove]</p>
 </div>
 
 <div class="command-box">
@@ -603,8 +565,6 @@
     <h3>embeds</h3>
     <p>Make warning/approval messages embeds or messages</p>
     <p>Aliases: embed</p>
-    <hr>
-    <p>Usage: embeds [enable|disable]</p>
 </div>
 
 <div class="command-box">
@@ -612,8 +572,6 @@
     <h3>reposters</h3>
     <p>Toggle whether social media links are reposted</p>
     <p>Aliases: reposter</p>
-    <hr>
-    <p>Usage: reposters [enable|disable]</p>
 </div>
 
 <div class="command-box">
@@ -621,8 +579,6 @@
     <h3>stealbanner</h3>
     <p>Steal the banner of another server</p>
     <p>Aliases: stealb</p>
-    <hr>
-    <p>Usage: stealbanner <invite code></p>
 </div>
 
 <div class="command-box">
@@ -630,8 +586,6 @@
     <h3>stealicon</h3>
     <p>Steal the icon of another server using its invite</p>
     <p>Aliases: steali</p>
-    <hr>
-    <p>Usage: stealicon <invite code></p>
 </div>
 
 <div class="command-box">
@@ -639,8 +593,6 @@
     <h3>stealsplash</h3>
     <p>Steal the splash of another server using its invite</p>
     <p>Aliases: steals</p>
-    <hr>
-    <p>Usage: stealsplash <invite code></p>
 </div>
 
 <div class="command-box">
@@ -648,8 +600,6 @@
     <h3>ticket</h3>
     <p>Set up ticketing system in a specific channel.</p>
     <p>Aliases: none</p>
-    <hr>
-    <p>Usage: ticket channel #tickets</p>
 </div>
 
 <div class="command-box">
@@ -657,8 +607,6 @@
     <h3>birthday</h3>
     <p>See how far your birthday is</p>
     <p>Aliases: bday</p>
-    <hr>
-    <p>Usage: birthday <month> <day></p>
 </div>
 
 <div class="command-box">
@@ -666,8 +614,6 @@
     <h3>createembed</h3>
     <p>Create and send a custom embed message.</p>
     <p>Aliases: ce</p>
-    <hr>
-    <p>Usage: createembed <embed code></p>
 </div>
 
 <div class="command-box">
@@ -675,8 +621,6 @@
     <h3>editsnipe</h3>
     <p>View recently edited messages</p>
     <p>Aliases: es</p>
-    <hr>
-    <p>Usage: editsnipe</p>
 </div>
 
 <div class="command-box">
@@ -684,8 +628,6 @@
     <h3>firstmessage</h3>
     <p>View the channel's first message</p>
     <p>Aliases: firstmsg</p>
-    <hr>
-    <p>Usage: firstmessage</p>
 </div>
 
 <div class="command-box">
@@ -693,17 +635,6 @@
     <h3>image</h3>
     <p>Search for an image on google</p>
     <p>Aliases: img</p>
-    <hr>
-    <p>Usage: image <query></p>
-</div>
-
-<div class="command-box">
-    <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('jumbo')">
-    <h3>jumbo</h3>
-    <p>Enlarge an emoji</p>
-    <p>Aliases: e,enlarge</p>
-    <hr>
-    <p>Usage: enlarge <emoji></p>
 </div>
 
 <div class="command-box">
@@ -711,8 +642,6 @@
     <h3>ocr</h3>
     <p>Extract text from an image</p>
     <p>Aliases: read</p>
-    <hr>
-    <p>Usage: ocr [attachment]</p>
 </div>
 
 <div class="command-box">
@@ -720,8 +649,6 @@
     <h3>snipe</h3>
     <p>View a recently deleted message</p>
     <p>Aliases: s</p>
-    <hr>
-    <p>Usage: snipe</p>
 </div>
 
 <div class="command-box">
@@ -729,8 +656,6 @@
     <h3>timezone</h3>
     <p>View a location's timezone</p>
     <p>Aliases: tz</p>
-    <hr>
-    <p>Usage: timezone <city></p>
 </div>
 
 <div class="command-box">
@@ -738,8 +663,6 @@
     <h3>translate</h3>
     <p>Translate text between languages</p>
     <p>Aliases: tr</p>
-    <hr>
-    <p>Usage: translate <language> <text></p>
 </div>
 
 <div class="command-box">
@@ -747,8 +670,6 @@
     <h3>urban</h3>
     <p>Search </p>
     <p>Aliases: ud</p>
-    <hr>
-    <p>Usage: urban <word></p>
 </div>
 
 <div class="command-box">
@@ -756,8 +677,6 @@
     <h3>weather</h3>
     <p>Get the weather of a city</p>
     <p>Aliases: wthr</p>
-    <hr>
-    <p>Usage: weather <location></p>
 </div>
 
 <div class="command-box">
@@ -765,8 +684,6 @@
     <h3>wikipedia</h3>
     <p>Search wiki for a query</p>
     <p>Aliases: wiki</p>
-    <hr>
-    <p>Usage: wikipedia <query></p>
 </div>
 
 <div class="command-box">
@@ -774,8 +691,6 @@
     <h3>wolfram</h3>
     <p>Get math answers</p>
     <p>Aliases: w</p>
-    <hr>
-    <p>Usage: wolfram <query></p>
 </div>
 
 <div class="command-box">
@@ -783,8 +698,6 @@
     <h3>zip</h3>
     <p>Download all emojis and send in zip</p>
     <p>Aliases: none</p>
-    <hr>
-    <p>Usage: zip</p>
 </div>
 </body>
 </html>
