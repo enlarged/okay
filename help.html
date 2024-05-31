@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>okay - commands</title>
+    <title>Lain Bot Commands</title>
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
@@ -30,6 +30,24 @@
             }
         }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom right, #101010, #1a1a1a, #101010, #1a1a1a, #101010);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333;
+        }
+
         .navbar {
             width: 100%;
             display: flex;
@@ -40,6 +58,7 @@
             position: fixed;
             top: 0;
             left: 0;
+            z-index: 1000;
         }
 
         .navbar .left,
@@ -94,6 +113,23 @@
             margin: 20px 0;
         }
 
+        .search-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #0c0c0c;
+            color: #fff;
+            font-size: 1em;
+        }
+
         .command-box {
             position: relative;
             background-color: #0c0c0c;
@@ -125,6 +161,36 @@
             cursor: pointer;
         }
     </style>
+
+    <script>
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Copied to clipboard: ' + text);
+        }
+
+        function searchCommands() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const commandBoxes = document.getElementsByClassName('command-box');
+
+            Array.from(commandBoxes).forEach(box => {
+                const name = box.getElementsByTagName('h3')[0].textContent.toLowerCase();
+                const description = box.getElementsByTagName('p')[0].textContent.toLowerCase();
+                const aliases = box.getElementsByTagName('p')[1].textContent.toLowerCase();
+
+                if (name.includes(filter) || description.includes(filter) || aliases.includes(filter)) {
+                    box.style.display = '';
+                } else {
+                    box.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="navbar">
@@ -134,14 +200,15 @@
         </div>
         <div class="middle">
             <button onclick="location.href='https://okaybot.xyz/status'">Status</button>
-            <button onclick="location.href='https://okaybot.xyz/help'">Commands</button>
+            <button onclick="location.href='https://okaybot.xyz/commands'">Commands</button>
             <button onclick="location.href='https://okaybot.xyz/faq'">FAQ</button>
-        </div>
-        <div class="right">
-            <button onclick="window.location.href='https://discord.gg/okay'">Discord</button>
         </div>
     </div>
     <div class="separator"></div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="searchCommands()" placeholder="Search for commands...">
+    </div>
 
 <div class="command-box">
     <img src="https://okaybot.xyz/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('cuddle')">
