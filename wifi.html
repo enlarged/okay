@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wi-Fi Speed Test</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&family=Work+Sans:wght@100;400&display=swap");
+
+        @keyframes slideInFromBottom {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(0%);
+            }
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(to bottom right, #101010, #1a1a1a, #101010, #1a1a1a, #101010);
+            background-size: 200% 200%;
+            animation: gradientShift 10s infinite linear;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: Work Sans, sans-serif;
+            font-size: 15mm;
+            color: #e0e0e0;
+            margin-bottom: 5px;
+            opacity: 0;
+            animation: fadeInText 2s forwards;
+            animation-delay: 1s;
+        }
+
+        #result {
+            font-family: Work Sans, sans-serif;
+            font-size: 10em;
+            color: #e0e0e0;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInText 2s forwards;
+            animation-delay: 1s;
+        }
+
+        button {
+            font-family: Work Sans, sans-serif;
+            font-size: 1.5em;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            background-color: #4c4c4c;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #6e6e6e;
+        }
+    </style>
+</head>
+<body>
+    <h1>wifi speed test</h1>
+    <button onclick="testSpeed()">Click to start test</button>
+    <div id="result">0 Mbps</div>
+
+    <script>
+        async function testSpeed() {
+            const duration = 10; 
+            const imageSize = 11485 * 8; 
+            let totalBytesLoaded = 0;
+            let startTime = new Date().getTime();
+
+            document.getElementById('result').innerText = '0 Mbps';
+
+            function updateSpeed() {
+                const currentTime = new Date().getTime();
+                const elapsedTime = (currentTime - startTime) / 1000;
+                const speedBps = (totalBytesLoaded / elapsedTime).toFixed(2); 
+                const speedKbps = (speedBps / 1024).toFixed(2); 
+                const speedMbps = (speedKbps / 1024).toFixed(2); 
+                document.getElementById('result').innerText = `${speedMbps} Mbps`;
+            }
+
+            function loadImage() {
+                const image = new Image();
+                image.src = 'https://www.google.com/images/phd/px.gif?' + new Date().getTime();
+                image.onload = () => {
+                    totalBytesLoaded += imageSize;
+                    if ((new Date().getTime() - startTime) < duration * 1000) {
+                        loadImage();
+                    } else {
+                        updateSpeed();
+                    }
+                };
+                image.onerror = () => {
+                    document.getElementById('result').innerText = 'Error in measuring speed.';
+                };
+            }
+
+            startTime = new Date().getTime();
+            loadImage();
+            const intervalId = setInterval(updateSpeed, 100);
+
+            setTimeout(() => {
+                clearInterval(intervalId);
+                updateSpeed();
+            }, duration * 1000);
+        }
+    </script>
+</body>
+</html>
