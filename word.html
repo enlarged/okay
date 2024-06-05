@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>okay - word search</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&family=Work+Sans:wght@100;400&display=swap");
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(to bottom right, #101010, #1a1a1a, #101010, #1a1a1a, #101010);
+            background-size: 200% 200%;
+            animation: gradientShift 10s infinite linear;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: Work Sans, sans-serif;
+            font-size: 15mm;
+            color: #e0e0e0;
+            margin-bottom: 5px;
+            opacity: 0;
+            animation: fadeInText 2s forwards;
+            animation-delay: 1s;
+        }
+
+        #search-bar {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        input[type="text"] {
+            font-family: Work Sans, sans-serif;
+            font-size: 1.5em;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 60%;
+        }
+
+        button {
+            font-family: Work Sans, sans-serif;
+            font-size: 1.5em;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            background-color: #4c4c4c;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #6e6e6e;
+        }
+
+        #definition {
+            font-family: Work Sans, sans-serif;
+            font-size: 1.5em;
+            color: #e0e0e0;
+            margin-top: 20px;
+            text-align: center;
+            width: 80%;
+            opacity: 0;
+            animation: fadeInText 2s forwards;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word definition search</h1>
+    <div id="search-bar">
+        <input type="text" id="word-input" placeholder="Enter a word...">
+        <button onclick="searchDefinition()">Search</button>
+    </div>
+    <div id="definition"></div>
+
+    <script>
+        async function searchDefinition() {
+            const word = document.getElementById('word-input').value;
+            const apiUrl = `https://api.urbandictionary.com/v0/define?term=${word}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data.list.length === 0) {
+                    document.getElementById('definition').innerText = 'No definition found.';
+                } else {
+                    const definition = data.list[0].definition;
+                    document.getElementById('definition').innerText = definition;
+                }
+
+            } catch (error) {
+                document.getElementById('definition').innerText = 'Error fetching definition.';
+            }
+
+            document.getElementById('definition').style.opacity = '1';
+        }
+    </script>
+</body>
+</html>
