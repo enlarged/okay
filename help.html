@@ -264,7 +264,7 @@
     </div>
 
     <div class="tab-container">
-        <button class="tab" onclick="filterByModule('All')">All</button><button class="tab" onclick="filterByModule('fun')">Fun</button><button class="tab" onclick="filterByModule('information')">Information</button><button class="tab" onclick="filterByModule('miscellaneous')">Miscellaneous</button><button class="tab" onclick="filterByModule('moderation')">Moderation</button><button class="tab" onclick="filterByModule('music')">Music</button><button class="tab" onclick="filterByModule('servers')">Servers</button><button class="tab" onclick="filterByModule('utility')">Utility</button><button class="tab" onclick="filterByModule('emoji')">Emoji</button></div>
+        <button class="tab" onclick="filterByModule('All')">All</button><button class="tab" onclick="filterByModule('fun')">Fun</button><button class="tab" onclick="filterByModule('information')">Information</button><button class="tab" onclick="filterByModule('lastfm')">Lastfm</button><button class="tab" onclick="filterByModule('miscellaneous')">Miscellaneous</button><button class="tab" onclick="filterByModule('emoji')">Emoji</button><button class="tab" onclick="filterByModule('moderation')">Moderation</button><button class="tab" onclick="filterByModule('music')">Music</button><button class="tab" onclick="filterByModule('roleplay')">Roleplay</button><button class="tab" onclick="filterByModule('servers')">Servers</button><button class="tab" onclick="filterByModule('utility')">Utility</button></div>
 <div class="command-box" data-module="fun">
     <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('balance')">
     <h3>balance</h3>
@@ -273,17 +273,24 @@
 </div>
 
 <div class="command-box" data-module="fun">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('cuddle')">
-    <h3>cuddle</h3>
-    <p>Cuddle with a member</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="fun">
     <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('deposit')">
     <h3>deposit</h3>
     <p>Deposit money from your balance to your bank account</p>
     <p>Aliases: dep</p>
+</div>
+
+<div class="command-box" data-module="fun">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('withdrawal')">
+    <h3>withdrawal</h3>
+    <p>Withdraw money from your bank account to your balance</p>
+    <p>Aliases: with</p>
+</div>
+
+<div class="command-box" data-module="fun">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('work')">
+    <h3>work</h3>
+    <p>Work to earn coins.</p>
+    <p>Aliases: none</p>
 </div>
 
 <div class="command-box" data-module="fun">
@@ -298,13 +305,6 @@
     <h3>joke</h3>
     <p>Get a random joke</p>
     <p>Aliases: jk</p>
-</div>
-
-<div class="command-box" data-module="fun">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('kiss')">
-    <h3>kiss</h3>
-    <p>Kiss with a member</p>
-    <p>Aliases: none</p>
 </div>
 
 <div class="command-box" data-module="fun">
@@ -333,20 +333,6 @@
     <h3>uwuify</h3>
     <p>Uwuify a string of text</p>
     <p>Aliases: uwu</p>
-</div>
-
-<div class="command-box" data-module="fun">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('withdrawal')">
-    <h3>withdrawal</h3>
-    <p>Withdraw money from your bank account to your balance</p>
-    <p>Aliases: with</p>
-</div>
-
-<div class="command-box" data-module="fun">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('work')">
-    <h3>work</h3>
-    <p>Work to earn coins.</p>
-    <p>Aliases: none</p>
 </div>
 
 <div class="command-box" data-module="information">
@@ -387,7 +373,7 @@
 <div class="command-box" data-module="information">
     <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('help')">
     <h3>help</h3>
-    <p>Displays a list of available commands or provides information about a specific command.</p>
+    <p>Displays information about a command/module</p>
     <p>Aliases: commands, h, cmds</p>
 </div>
 
@@ -508,6 +494,55 @@
     <h3>jumbo</h3>
     <p>Enlarge an emoji</p>
     <p>Aliases: e, enlarge</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('lastfm')">
+    <h3>lastfm</h3>
+    <p>Interact with your music</p>
+    <p>Aliases: lf</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('nowplaying')">
+    <h3>nowplaying</h3>
+    <p>Shows your currently playing song</p>
+    <p>Aliases: fm, np, song</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('recent')">
+    <h3>recent</h3>
+    <p>Shows your most recent tracks</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('recommend')">
+    <h3>recommend</h3>
+    <p>Recommend a song based on your LastFM history</p>
+    <p>Aliases: rec</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('topalbums')">
+    <h3>topalbums</h3>
+    <p>View your top albums</p>
+    <p>Aliases: topal, tal</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('topartists')">
+    <h3>topartists</h3>
+    <p>View your top artists</p>
+    <p>Aliases: topar, ta</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('toptracks')">
+    <h3>toptracks</h3>
+    <p>View your top tracks</p>
+    <p>Aliases: topt, tt</p>
 </div>
 
 <div class="command-box" data-module="miscellaneous">
@@ -641,6 +676,13 @@
     <h3>youtube</h3>
     <p>Searches YouTube for video query</p>
     <p>Aliases: yt</p>
+</div>
+
+<div class="command-box" data-module="emoji">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('addmany')">
+    <h3>addmany</h3>
+    <p>Add multiple emojis to the server</p>
+    <p>Aliases: addm, am</p>
 </div>
 
 <div class="command-box" data-module="moderation">
@@ -861,34 +903,6 @@
 </div>
 
 <div class="command-box" data-module="music">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('lastfm')">
-    <h3>lastfm</h3>
-    <p>Interact with your music</p>
-    <p>Aliases: lf</p>
-</div>
-
-<div class="command-box" data-module="music">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('nowplaying')">
-    <h3>nowplaying</h3>
-    <p>Shows your currently playing song</p>
-    <p>Aliases: fm, np, song</p>
-</div>
-
-<div class="command-box" data-module="music">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('recent')">
-    <h3>recent</h3>
-    <p>Shows your most recent tracks</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="music">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('recommend')">
-    <h3>recommend</h3>
-    <p>Recommend a song based on your LastFM history</p>
-    <p>Aliases: rec</p>
-</div>
-
-<div class="command-box" data-module="music">
     <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('soundcloud')">
     <h3>soundcloud</h3>
     <p>Search for a song on SoundCloud</p>
@@ -902,25 +916,39 @@
     <p>Aliases: sp</p>
 </div>
 
-<div class="command-box" data-module="music">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('topartists')">
-    <h3>topartists</h3>
-    <p>View your top artists</p>
-    <p>Aliases: topar, ta</p>
+<div class="command-box" data-module="roleplay">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('cuddle')">
+    <h3>cuddle</h3>
+    <p>Cuddle with a member</p>
+    <p>Aliases: none</p>
 </div>
 
-<div class="command-box" data-module="music">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('topalbums')">
-    <h3>topalbums</h3>
-    <p>View your top albums</p>
-    <p>Aliases: topal, tal</p>
+<div class="command-box" data-module="roleplay">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('feed')">
+    <h3>feed</h3>
+    <p>Feed a member</p>
+    <p>Aliases: none</p>
 </div>
 
-<div class="command-box" data-module="music">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('toptracks')">
-    <h3>toptracks</h3>
-    <p>View your top tracks</p>
-    <p>Aliases: topt, tt</p>
+<div class="command-box" data-module="roleplay">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('hug')">
+    <h3>hug</h3>
+    <p>Hug a member</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="roleplay">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('kiss')">
+    <h3>kiss</h3>
+    <p>Kiss with a member</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="roleplay">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('slap')">
+    <h3>slap</h3>
+    <p>Slap a member</p>
+    <p>Aliases: none</p>
 </div>
 
 <div class="command-box" data-module="servers">
@@ -998,6 +1026,13 @@
     <h3>goodbye</h3>
     <p>Manage goodbye settings for the server.</p>
     <p>Aliases: gb</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('pinterestboard')">
+    <h3>pinterestboard</h3>
+    <p>Search pins or view a user's pins on Pinterest</p>
+    <p>Aliases: pins</p>
 </div>
 
 <div class="command-box" data-module="servers">
@@ -1145,13 +1180,6 @@
     <h3>zip</h3>
     <p>Download all emojis and send in zip</p>
     <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="emoji">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copyToClipboard('addmany')">
-    <h3>addmany</h3>
-    <p>Add multiple emojis to the server</p>
-    <p>Aliases: addm, am</p>
 </div>
 </body>
 </html>
