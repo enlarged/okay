@@ -1,1151 +1,958 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lain - commands</title>
-	<link rel="shortcut icon" href="https://lains.win/lain.png">
- 	<link rel="stylesheet" href="https://lains.win/commands.css">
-
-    <script>
-        function copy(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            alert('Copied to clipboard: ' + text);
-        }
-
-        function search() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toLowerCase();
-            const commandBoxes = document.getElementsByClassName('command-box');
-
-            Array.from(commandBoxes).forEach(box => {
-                const module = box.getAttribute('data-module').toLowerCase();
-                const name = box.getElementsByTagName('h3')[0].textContent.toLowerCase();
-                const description = box.getElementsByTagName('p')[0].textContent.toLowerCase();
-                const aliases = box.getElementsByTagName('p')[1].textContent.toLowerCase();
-
-                if (module.includes(filter) || name.includes(filter) || description.includes(filter) || aliases.includes(filter)) {
-                    box.style.display = '';
-                } else {
-                    box.style.display = 'none';
-                }
-            });
-        }
-
-        function filter(module) {
-            const commandBoxes = document.getElementsByClassName('command-box');
-
-            Array.from(commandBoxes).forEach(box => {
-                if (module === 'All' || box.getAttribute('data-module') === module) {
-                    box.style.display = '';
-                } else {
-                    box.style.display = 'none';
-                }
-            });
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://lains.win/silly.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sarala&display=swap">
+<link rel="shortcut icon" href="https://cdn.discordapp.com/avatars/1110011733382287411/c5cb39ce7c9727cadce0a628892855f6.png?size=2048">
+<title>lain - commands</title>
 </head>
 <body>
-<body>
-    <div class="navbar">
-    <div class="left">
-        <img src="https://lains.win/lain.png" alt="Bot Avatar">
-        <span>lain</span>
-    </div>
-    <div class="middle">
-        <button onclick="location.href='https://lains.win/status'">Status</button>
-        <button onclick="location.href='https://lains.win/help'">Commands</button>
-        <button onclick="location.href='https://lains.win/faq'">FAQ</button>
-    </div>
-    <div class="right">
-        <button onclick="location.href='https://discord.com/invite/okay'">
-            <img src="https://lains.win/discord.png" alt="Discord Logo">
-            Discord
-        </button>
-    </div>
-</div>
-    <div class="separator"></div>
-
-    <div class="search-container">
-        <input type="text" id="searchInput" onkeyup="search()" placeholder="Search for commands...">
-    </div>
-
-    <div class="tab-container">
-        <button class="tab" onclick="filter('All')">All</button><button class="tab" onclick="filter('automod')">Automod</button><button class="tab" onclick="filter('moderation')">Moderation</button><button class="tab" onclick="filter('economy')">Economy</button><button class="tab" onclick="filter('fun')">Fun</button><button class="tab" onclick="filter('information')">Information</button><button class="tab" onclick="filter('lastfm')">Lastfm</button><button class="tab" onclick="filter('miscellaneous')">Miscellaneous</button><button class="tab" onclick="filter('utility')">Utility</button><button class="tab" onclick="filter('music')">Music</button><button class="tab" onclick="filter('roleplay')">Roleplay</button><button class="tab" onclick="filter('servers')">Servers</button></div>
-<div class="command-box" data-module="automod">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('antibotadd')">
-    <h3>antibotadd</h3>
-    <p>Automatically ban suspicious bots</p>
-    <p>Aliases: antiba</p>
-</div>
-
-<div class="command-box" data-module="automod">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('antiraid')">
-    <h3>antiraid</h3>
-    <p>Automatically ban suspicious users</p>
-    <p>Aliases: antir</p>
-</div>
-
-<div class="command-box" data-module="automod">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('antiselfreact')">
-    <h3>antiselfreact</h3>
-    <p>Prevents users from reacting to their own messages</p>
-    <p>Aliases: antireact</p>
-</div>
-
-<div class="command-box" data-module="automod">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('chatfilter')">
-    <h3>chatfilter</h3>
-    <p>Manage the chat filter</p>
-    <p>Aliases: filter</p>
-</div>
-
-<div class="command-box" data-module="automod">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('disablecommand')">
-    <h3>disablecommand</h3>
-    <p>Disable a command</p>
-    <p>Aliases: disablecmd, disable</p>
-</div>
-
-<div class="command-box" data-module="automod">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('disablemodule')">
-    <h3>disablemodule</h3>
-    <p>Disable all commands in a module</p>
-    <p>Aliases: disablemod</p>
-</div>
-
-<div class="command-box" data-module="automod">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('enablecommand')">
-    <h3>enablecommand</h3>
-    <p>Enable a command</p>
-    <p>Aliases: enablecmd, enable</p>
-</div>
-
-<div class="command-box" data-module="automod">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('enablemodule')">
-    <h3>enablemodule</h3>
-    <p>Enable all commands in a module</p>
-    <p>Aliases: enablemod</p>
-</div>
-
-<div class="command-box" data-module="automod">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('filterinvites')">
-    <h3>filterinvites</h3>
-    <p>Prevent server invites from being sent</p>
-    <p>Aliases: antilink</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('trust')">
-    <h3>trust</h3>
-    <p>Trust a user to manaage automod features</p>
-    <p>Aliases: trust</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('addmany')">
-    <h3>addmany</h3>
-    <p>Add multiple emojis to the server</p>
-    <p>Aliases: addm, am</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('ban')">
-    <h3>ban</h3>
-    <p>Ban a member from the server</p>
-    <p>Aliases: deport</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('banlist')">
-    <h3>banlist</h3>
-    <p>Shows all banned users in the server</p>
-    <p>Aliases: bans</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('cleanup')">
-    <h3>cleanup</h3>
-    <p>Delete a certain amount of messages from bots</p>
-    <p>Aliases: clear, bc</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('embedclear')">
-    <h3>embedclear</h3>
-    <p>Clears all embeds in a channel</p>
-    <p>Aliases: clearembed, clearembeds</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('hidechannel')">
-    <h3>hidechannel</h3>
-    <p>Hide the channel</p>
-    <p>Aliases: hide</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('imageclear')">
-    <h3>imageclear</h3>
-    <p>Clears all images in a channel</p>
-    <p>Aliases: clearimage, clearimages</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('imagemute')">
-    <h3>imagemute</h3>
-    <p>Mute images for a specific user in the channel</p>
-    <p>Aliases: imute</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('imageunmute')">
-    <h3>imageunmute</h3>
-    <p>Unmute images for a specific user in the channel</p>
-    <p>Aliases: unmuteimage, unimagemute</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('jail')">
-    <h3>jail</h3>
-    <p>Jails a mentioned user</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('lockdown')">
-    <h3>lockdown</h3>
-    <p>Lock down the channel</p>
-    <p>Aliases: lock</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('mute')">
-    <h3>mute</h3>
-    <p>Mute a specific user in the channel</p>
-    <p>Aliases: shutup</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('muted')">
-    <h3>muted</h3>
-    <p>See how many users are muted</p>
-    <p>Aliases: mute</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('nickname')">
-    <h3>nickname</h3>
-    <p>Change the nickname of a user</p>
-    <p>Aliases: nick</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('nicknamereset')">
-    <h3>nicknamereset</h3>
-    <p>Reset the nickname of a user</p>
-    <p>Aliases: resetnickname, resetnick, nickreset</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('nuke')">
-    <h3>nuke</h3>
-    <p>Nuke the channel</p>
-    <p>Aliases: nukechannel</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('pinmessage')">
-    <h3>pinmessage</h3>
-    <p>Pin a message</p>
-    <p>Aliases: pin</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('purge')">
-    <h3>purge</h3>
-    <p>Mass delete messages</p>
-    <p>Aliases: clear, c</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('reactionmute')">
-    <h3>reactionmute</h3>
-    <p>Mute reactions for a specific user in the channel</p>
-    <p>Aliases: rmute</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('reactionunmute')">
-    <h3>reactionunmute</h3>
-    <p>Unmute reactions for a specific user in the channel</p>
-    <p>Aliases: unmutereaction, unreactionmute</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('roleall')">
-    <h3>roleall</h3>
-    <p>Give a role to all members</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('selfpurge')">
-    <h3>selfpurge</h3>
-    <p>Delete 100 of your own messages</p>
-    <p>Aliases: me</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('setupmod')">
-    <h3>setupmod</h3>
-    <p>Setup moderation settings for the server</p>
-    <p>Aliases: setme</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('slowmode')">
-    <h3>slowmode</h3>
-    <p>Set the slowmode of a channel</p>
-    <p>Aliases: sm</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('striproles')">
-    <h3>striproles</h3>
-    <p>Strip all of a user's roles</p>
-    <p>Aliases: strip</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('tempban')">
-    <h3>tempban</h3>
-    <p>Temporarily bans a user</p>
-    <p>Aliases: tban</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('topic')">
-    <h3>topic</h3>
-    <p>Set the channel topic</p>
-    <p>Aliases: settopic, setdescription</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unban')">
-    <h3>unban</h3>
-    <p>Unban a user</p>
-    <p>Aliases: unbanuser</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unbanall')">
-    <h3>unbanall</h3>
-    <p>Unban all members in the server</p>
-    <p>Aliases: unbanall</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unhidechannel')">
-    <h3>unhidechannel</h3>
-    <p>Unhide the channel</p>
-    <p>Aliases: unhide</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unjail')">
-    <h3>unjail</h3>
-    <p>Unjails a mentioned user</p>
-    <p>Aliases: ujail</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unlock')">
-    <h3>unlock</h3>
-    <p>Unlock the channel</p>
-    <p>Aliases: unlockdown, unlockchannel</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unmute')">
-    <h3>unmute</h3>
-    <p>Unmute a specific user in the channel</p>
-    <p>Aliases: unshutup</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unpinmessage')">
-    <h3>unpinmessage</h3>
-    <p>Unpin a message</p>
-    <p>Aliases: unpin</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('vanityuses')">
-    <h3>vanityuses</h3>
-    <p>Check how many uses your vanity has</p>
-    <p>Aliases: uses</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('removejail')">
-    <h3>removejail</h3>
-    <p>Removes the jail setup from the server</p>
-    <p>Aliases: rjail</p>
-</div>
-
-<div class="command-box" data-module="moderation">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('setupjail')">
-    <h3>setupjail</h3>
-    <p>Sets up the jail role and channel</p>
-    <p>Aliases: setupj</p>
-</div>
-
-<div class="command-box" data-module="economy">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('balance')">
-    <h3>balance</h3>
-    <p>Check your balance and bank account</p>
-    <p>Aliases: bal</p>
-</div>
-
-<div class="command-box" data-module="economy">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('deposit')">
-    <h3>deposit</h3>
-    <p>Deposit money from your balance to your bank account</p>
-    <p>Aliases: dep</p>
-</div>
-
-<div class="command-box" data-module="economy">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('withdrawal')">
-    <h3>withdrawal</h3>
-    <p>Withdraw money from your bank account to your balance</p>
-    <p>Aliases: with</p>
-</div>
-
-<div class="command-box" data-module="fun">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('work')">
-    <h3>work</h3>
-    <p>Work to earn coins.</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="fun">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('divorce')">
-    <h3>divorce</h3>
-    <p>Divorce your partner</p>
-    <p>Aliases: dvc</p>
-</div>
-
-<div class="command-box" data-module="fun">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('joke')">
-    <h3>joke</h3>
-    <p>Get a random joke</p>
-    <p>Aliases: jk</p>
-</div>
-
-<div class="command-box" data-module="fun">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('marriage')">
-    <h3>marriage</h3>
-    <p>See who a user is married to</p>
-    <p>Aliases: married</p>
-</div>
-
-<div class="command-box" data-module="fun">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('marry')">
-    <h3>marry</h3>
-    <p>Marry a server member</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="fun">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('penis')">
-    <h3>penis</h3>
-    <p>Check the size of a mentioned user's imaginary penis.</p>
-    <p>Aliases: pp</p>
-</div>
-
-<div class="command-box" data-module="fun">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('uwuify')">
-    <h3>uwuify</h3>
-    <p>Uwuify a string of text</p>
-    <p>Aliases: uwu</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('about')">
-    <h3>about</h3>
-    <p>Shows information about the bo</p>
-    <p>Aliases: botinfo</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('avatar')">
-    <h3>avatar</h3>
-    <p>View a user's avatar</p>
-    <p>Aliases: av</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('banner')">
-    <h3>banner</h3>
-    <p>View a user's banner</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('checkvanity')">
-    <h3>checkvanity</h3>
-    <p>Check if a vanity URL is available</p>
-    <p>Aliases: checkurl</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('faq')">
-    <h3>faq</h3>
-    <p>Shows the FAQ of the bot</p>
-    <p>Aliases: faq</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('firstmembers')">
-    <h3>firstmembers</h3>
-    <p>Shows the first members to join the server</p>
-    <p>Aliases: recent</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('help')">
-    <h3>help</h3>
-    <p>Displays information about a command/module</p>
-    <p>Aliases: commands, h, cmds</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('invite')">
-    <h3>invite</h3>
-    <p>Get the invite link for the bot.</p>
-    <p>Aliases: inv</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('iplookup')">
-    <h3>iplookup</h3>
-    <p>Lookup information about an IP address</p>
-    <p>Aliases: ip</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('joinposition')">
-    <h3>joinposition</h3>
-    <p>See what # member you were</p>
-    <p>Aliases: joinpos</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('membercount')">
-    <h3>membercount</h3>
-    <p>View the server's member count</p>
-    <p>Aliases: mc, members</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('modules')">
-    <h3>modules</h3>
-    <p>List all modules</p>
-    <p>Aliases: listmodules</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('namehistory')">
-    <h3>namehistory</h3>
-    <p>View the name history of a user</p>
-    <p>Aliases: names</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('oldestmembers')">
-    <h3>oldestmembers</h3>
-    <p>Shows the oldest members in the server.</p>
-    <p>Aliases: oldest</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('ping')">
-    <h3>ping</h3>
-    <p>Get the bot's latency to discord</p>
-    <p>Aliases: ws</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('roles')">
-    <h3>roles</h3>
-    <p>Shows all roles in the server</p>
-    <p>Aliases: role</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('serverbanner')">
-    <h3>serverbanner</h3>
-    <p>Show the server banner.</p>
-    <p>Aliases: banner, sbnr</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('servericon')">
-    <h3>servericon</h3>
-    <p>Show the server icon.</p>
-    <p>Aliases: icon, sicon</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('serverinfo')">
-    <h3>serverinfo</h3>
-    <p>Return server information</p>
-    <p>Aliases: si</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('serversplash')">
-    <h3>serversplash</h3>
-    <p>Show the server splash.</p>
-    <p>Aliases: splash, sspl</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('status')">
-    <h3>status</h3>
-    <p>Shows the status of the bot</p>
-    <p>Aliases: status</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('subcommands')">
-    <h3>subcommands</h3>
-    <p>Shows the subcommands of a command</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('uptime')">
-    <h3>uptime</h3>
-    <p>Shows bot uptime.</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('usage')">
-    <h3>usage</h3>
-    <p>Shows the usage of a command</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('userinfo')">
-    <h3>userinfo</h3>
-    <p>Get information about a user</p>
-    <p>Aliases: ui, whois</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('variables')">
-    <h3>variables</h3>
-    <p>View the bot's variables</p>
-    <p>Aliases: vars</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('clearnames')">
-    <h3>clearnames</h3>
-    <p>Clears your name history</p>
-    <p>Aliases: clearnamehistory, clearnames</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('jumbo')">
-    <h3>jumbo</h3>
-    <p>Enlarge an emoji</p>
-    <p>Aliases: e, enlarge</p>
-</div>
-
-<div class="command-box" data-module="information">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('invites')">
-    <h3>invites</h3>
-    <p>Shows all the server's invites</p>
-    <p>Aliases: invs</p>
-</div>
-
-<div class="command-box" data-module="lastfm">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('lastfm')">
-    <h3>lastfm</h3>
-    <p>Interact with your music</p>
-    <p>Aliases: lf</p>
-</div>
-
-<div class="command-box" data-module="lastfm">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('nowplaying')">
-    <h3>nowplaying</h3>
-    <p>Shows your currently playing song</p>
-    <p>Aliases: fm, np, song</p>
-</div>
-
-<div class="command-box" data-module="lastfm">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('recent')">
-    <h3>recent</h3>
-    <p>Shows your most recent tracks</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="lastfm">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('recommend')">
-    <h3>recommend</h3>
-    <p>Recommend a song based on your LastFM history</p>
-    <p>Aliases: rec</p>
-</div>
-
-<div class="command-box" data-module="lastfm">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('topalbums')">
-    <h3>topalbums</h3>
-    <p>View your top albums</p>
-    <p>Aliases: topal, tal</p>
-</div>
-
-<div class="command-box" data-module="lastfm">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('topartists')">
-    <h3>topartists</h3>
-    <p>View your top artists</p>
-    <p>Aliases: topar, ta</p>
-</div>
-
-<div class="command-box" data-module="lastfm">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('toptracks')">
-    <h3>toptracks</h3>
-    <p>View your top tracks</p>
-    <p>Aliases: topt, tt</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('anime')">
-    <h3>anime</h3>
-    <p>Search an Anime on Kitsu.io</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('appstore')">
-    <h3>appstore</h3>
-    <p>View an app on the app store</p>
-    <p>Aliases: playstore, app</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('cashapp')">
-    <h3>cashapp</h3>
-    <p>View a CashApp profile</p>
-    <p>Aliases: ca</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('fortnite')">
-    <h3>fortnite</h3>
-    <p>View fortnite related information</p>
-    <p>Aliases: fort, fn</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('gemini')">
-    <h3>gemini</h3>
-    <p>Generate text with prompts</p>
-    <p>Aliases: gpt, ask, chatgpt</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('giphy')">
-    <h3>giphy</h3>
-    <p>Search Giphy for a GIF.</p>
-    <p>Aliases: gif</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('github')">
-    <h3>github</h3>
-    <p>Get information from a github profile</p>
-    <p>Aliases: git, gh</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('imdb')">
-    <h3>imdb</h3>
-    <p>Get information on a series</p>
-    <p>Aliases: movie, series</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('instagram')">
-    <h3>instagram</h3>
-    <p>View an instagram profile</p>
-    <p>Aliases: insta, ig</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('playstation')">
-    <h3>playstation</h3>
-    <p>Search for a PlayStation profile</p>
-    <p>Aliases: psn</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('pokemon')">
-    <h3>pokemon</h3>
-    <p>View information about a Pokémon</p>
-    <p>Aliases: pokedex</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('snapchat')">
-    <h3>snapchat</h3>
-    <p>View a snapchat profile</p>
-    <p>Aliases: sc</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('steam')">
-    <h3>steam</h3>
-    <p>Search Steam for a game</p>
-    <p>Aliases: game</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('tiktok')">
-    <h3>tiktok</h3>
-    <p>View a tiktok profile</p>
-    <p>Aliases: tt</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('twitter')">
-    <h3>twitter</h3>
-    <p>View a twitter profile</p>
-    <p>Aliases: x</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('valorant')">
-    <h3>valorant</h3>
-    <p>Get information on a Valorant profile</p>
-    <p>Aliases: val</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('xbox')">
-    <h3>xbox</h3>
-    <p>Gets profile information on the given Xbox gamertag</p>
-    <p>Aliases: xb, xbl</p>
-</div>
-
-<div class="command-box" data-module="miscellaneous">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('youtube')">
-    <h3>youtube</h3>
-    <p>Searches YouTube for video query</p>
-    <p>Aliases: yt</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('steal')">
-    <h3>steal</h3>
-    <p>Steal an emoji</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('birthday')">
-    <h3>birthday</h3>
-    <p>See how far your birthday is</p>
-    <p>Aliases: bday</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('compress')">
-    <h3>compress</h3>
-    <p>Compresses the quality of the given image</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('convert')">
-    <h3>convert</h3>
-    <p>Converts a video file to an MP3</p>
-    <p>Aliases: </p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('createembed')">
-    <h3>createembed</h3>
-    <p>Create and send a custom embed message.</p>
-    <p>Aliases: ce</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('editsnipe')">
-    <h3>editsnipe</h3>
-    <p>View recently edited messages</p>
-    <p>Aliases: es</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('firstmessage')">
-    <h3>firstmessage</h3>
-    <p>View the channel's first message</p>
-    <p>Aliases: firstmsg</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('image')">
-    <h3>image</h3>
-    <p>Search for an image on google</p>
-    <p>Aliases: img</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('ocr')">
-    <h3>ocr</h3>
-    <p>Extract text from an image</p>
-    <p>Aliases: read</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('pingall')">
-    <h3>pingall</h3>
-    <p>Pings everyone in the server with 30 users per message</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('poll')">
-    <h3>poll</h3>
-    <p>Create a poll</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('rotate')">
-    <h3>rotate</h3>
-    <p>Rotates the given image by the specified degrees</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('snipe')">
-    <h3>snipe</h3>
-    <p>View a recently deleted message</p>
-    <p>Aliases: s</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('timezone')">
-    <h3>timezone</h3>
-    <p>View a location's timezone</p>
-    <p>Aliases: tz</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('translate')">
-    <h3>translate</h3>
-    <p>Translate text between languages</p>
-    <p>Aliases: tr</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('urban')">
-    <h3>urban</h3>
-    <p>Search </p>
-    <p>Aliases: ud</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('weather')">
-    <h3>weather</h3>
-    <p>Get the weather of a city</p>
-    <p>Aliases: wthr</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('wikipedia')">
-    <h3>wikipedia</h3>
-    <p>Search wiki for a query</p>
-    <p>Aliases: wiki</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('wolfram')">
-    <h3>wolfram</h3>
-    <p>Get math answers</p>
-    <p>Aliases: w</p>
-</div>
-
-<div class="command-box" data-module="utility">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('zip')">
-    <h3>zip</h3>
-    <p>Download all emojis and send in zip</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="music">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('itunes')">
-    <h3>itunes</h3>
-    <p>Search iTunes for a song</p>
-    <p>Aliases: itu</p>
-</div>
-
-<div class="command-box" data-module="music">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('soundcloud')">
-    <h3>soundcloud</h3>
-    <p>Search for a song on SoundCloud</p>
-    <p>Aliases: sc</p>
-</div>
-
-<div class="command-box" data-module="music">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('spotify')">
-    <h3>spotify</h3>
-    <p>Search spotify for a song</p>
-    <p>Aliases: sp</p>
-</div>
-
-<div class="command-box" data-module="roleplay">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('cuddle')">
-    <h3>cuddle</h3>
-    <p>Cuddle with a member</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="roleplay">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('feed')">
-    <h3>feed</h3>
-    <p>Feed a member</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="roleplay">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('hug')">
-    <h3>hug</h3>
-    <p>Hug a member</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="roleplay">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('kiss')">
-    <h3>kiss</h3>
-    <p>Kiss with a member</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="roleplay">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('slap')">
-    <h3>slap</h3>
-    <p>Slap a member</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="roleplay">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('tickle')">
-    <h3>tickle</h3>
-    <p>Tickle a member</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('autobanner')">
-    <h3>autobanner</h3>
-    <p>Automatically sends banners to a channel</p>
-    <p>Aliases: banners</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('autopfp')">
-    <h3>autopfp</h3>
-    <p>Automatically sends pfps to a channel</p>
-    <p>Aliases: pfps</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('autorole')">
-    <h3>autorole</h3>
-    <p>Manage autoroles for the server</p>
-    <p>Aliases: arl</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('embeds')">
-    <h3>embeds</h3>
-    <p>Make warning/approval messages embeds or messages</p>
-    <p>Aliases: embed</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('goodbye')">
-    <h3>goodbye</h3>
-    <p>Manage goodbye settings for the server.</p>
-    <p>Aliases: gb</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('pinterestboard')">
-    <h3>pinterestboard</h3>
-    <p>Search pins or view a user's pins on Pinterest</p>
-    <p>Aliases: pins</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('prefix')">
-    <h3>prefix</h3>
-    <p>Set the bot prefix for this server</p>
-    <p>Aliases: setprefix</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('reposters')">
-    <h3>reposters</h3>
-    <p>Toggle whether social media links are reposted</p>
-    <p>Aliases: reposter</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('stealbanner')">
-    <h3>stealbanner</h3>
-    <p>Steal the banner of another server</p>
-    <p>Aliases: stealb</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('stealicon')">
-    <h3>stealicon</h3>
-    <p>Steal the icon of another server using its invite</p>
-    <p>Aliases: steali</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('stealsplash')">
-    <h3>stealsplash</h3>
-    <p>Steal the splash of another server using its invite</p>
-    <p>Aliases: steals</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('ticket')">
-    <h3>ticket</h3>
-    <p>Set up ticketing system in a specific channel.</p>
-    <p>Aliases: none</p>
-</div>
-
-<div class="command-box" data-module="servers">
-    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('welcome')">
-    <h3>welcome</h3>
-    <p>Manage welcome settings for the server.</p>
-    <p>Aliases: welc</p>
+<div class="app-1jaXl app-desktop">
+<nav class="nav-kTxQW">
+<div class="navbar-2kznD">
+<a class="brand-1V9Xv" href="/"><span href=""> </span><span class="brand-text-1QXBj">lain </span></a>
+<ul>
+<li><a href="https://lains.win">Home</a></li>
+<li><a aria-current="page" class="active" href="#">Commands</a></li>
+<li><a href="https://discord.gg/okay">Server</a></li>
+</ul>
+</div>
+</nav>
+<div class="page-25Hv3">
+<div class="container-10oz2">
+<div class="column-y2WcB">
+<div class="sidenav-2J7Sr" id="sideNavChoose">
+<ul><li><a href="#automod"><img src="https://lains.win/automod.png" alt="Icon" style="width: 16px; height: 16px; margin-right: 5px;">Automod</a></li><li><a href="#moderation"><img src="https://lains.win/moderation.png" alt="Icon" style="width: 16px; height: 16px; margin-right: 5px;">Moderation</a></li><li><a href="#economy"><img src="https://lains.win/economy.png" alt="Icon" style="width: 16px; height: 16px; margin-right: 5px;">Economy</a></li><li><a href="#fun"><img src="https://lains.win/fun.png" alt="Icon" style="width: 16px; height: 16px; margin-right: 5px;">Fun</a></li><li><a href="#information"><img src="https://lains.win/information.png" alt="Icon" style="width: 16px; height: 16px; margin-right: 5px;">Information</a></li><li><a href="#lastfm"><img src="https://lains.win/lastfm.png" alt="Icon" style="width: 16px; height: 16px; margin-right: 5px;">Lastfm</a></li><li><a href="#miscellaneous"><img src="https://lains.win/miscellaneous.png" alt="Icon" style="width: 16px; height: 16px; margin-right: 5px;">Miscellaneous</a></li><li><a href="#utility"><img src="https://lains.win/utility.png" alt="Icon" style="width: 16px; height: 16px; margin-right: 5px;">Utility</a></li><li><a href="#porn"><img src="https://lains.win/porn.png" alt="Icon" style="width: 16px; height: 16px; margin-right: 5px;">Porn</a></li><li><a href="#roleplay"><img src="https://lains.win/roleplay.png" alt="Icon" style="width: 16px; height: 16px; margin-right: 5px;">Roleplay</a></li><li><a href="#servers"><img src="https://lains.win/servers.png" alt="Icon" style="width: 16px; height: 16px; margin-right: 5px;">Servers</a></li></ul>
+</div>
+</div>
+<div class="column-y2WcB colum-big-2uZWL">
+<div class="tables-2UgSY"><div class="table-dD95W" id="automod">
+<div class="table-header-21_bM"><span>Automod</span></div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>antibotadd</span></div>
+<div class="command-description-_Qpat"><span>Automatically ban suspicious bots</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>antiraid</span></div>
+<div class="command-description-_Qpat"><span>Automatically ban suspicious users</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>antiselfreact</span></div>
+<div class="command-description-_Qpat"><span>Prevents users from reacting to their own messages</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>chatfilter</span></div>
+<div class="command-description-_Qpat"><span>Manage the chat filter</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>disablecommand</span></div>
+<div class="command-description-_Qpat"><span>Disable a command</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>disablemodule</span></div>
+<div class="command-description-_Qpat"><span>Disable all commands in a module</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>enablecommand</span></div>
+<div class="command-description-_Qpat"><span>Enable a command</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>enablemodule</span></div>
+<div class="command-description-_Qpat"><span>Enable all commands in a module</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>filterinvites</span></div>
+<div class="command-description-_Qpat"><span>Prevent server invites from being sent</span></div>
+</div>
+</div></div><div class="table-dD95W" id="moderation">
+<div class="table-header-21_bM"><span>Moderation</span></div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>trust</span></div>
+<div class="command-description-_Qpat"><span>Trust a user to manaage automod features</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>addmany</span></div>
+<div class="command-description-_Qpat"><span>Add multiple emojis to the server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>ban</span></div>
+<div class="command-description-_Qpat"><span>Ban a member from the server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>banlist</span></div>
+<div class="command-description-_Qpat"><span>Shows all banned users in the server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>banreason</span></div>
+<div class="command-description-_Qpat"><span>Shows the reason for a user's ban</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>cleanup</span></div>
+<div class="command-description-_Qpat"><span>Delete a certain amount of messages from bots</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>clearreactions</span></div>
+<div class="command-description-_Qpat"><span>Clear the reaction snipe cache for the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>clearsnipe</span></div>
+<div class="command-description-_Qpat"><span>Clear the message cache for the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>embedclear</span></div>
+<div class="command-description-_Qpat"><span>Clears all embeds in a channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>hidechannel</span></div>
+<div class="command-description-_Qpat"><span>Hide the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>imageclear</span></div>
+<div class="command-description-_Qpat"><span>Clears all images in a channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>imagemute</span></div>
+<div class="command-description-_Qpat"><span>Mute images for a specific user in the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>imageunmute</span></div>
+<div class="command-description-_Qpat"><span>Unmute images for a specific user in the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>jail</span></div>
+<div class="command-description-_Qpat"><span>Jails a mentioned user</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>lockdown</span></div>
+<div class="command-description-_Qpat"><span>Lock down the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>mute</span></div>
+<div class="command-description-_Qpat"><span>Mute a specific user in the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>muted</span></div>
+<div class="command-description-_Qpat"><span>See how many users are muted</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>nickname</span></div>
+<div class="command-description-_Qpat"><span>Change the nickname of a user</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>nicknamereset</span></div>
+<div class="command-description-_Qpat"><span>Reset the nickname of a user</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>nuke</span></div>
+<div class="command-description-_Qpat"><span>Nuke the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>pinmessage</span></div>
+<div class="command-description-_Qpat"><span>Pin a message</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>purge</span></div>
+<div class="command-description-_Qpat"><span>Mass delete messages</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>reactionmute</span></div>
+<div class="command-description-_Qpat"><span>Mute reactions for a specific user in the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>reactionunmute</span></div>
+<div class="command-description-_Qpat"><span>Unmute reactions for a specific user in the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>removebanner</span></div>
+<div class="command-description-_Qpat"><span>Remove banner from channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>removeicon</span></div>
+<div class="command-description-_Qpat"><span>Remove server icon</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>removejail</span></div>
+<div class="command-description-_Qpat"><span>Removes the jail setup from the server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>removensfw</span></div>
+<div class="command-description-_Qpat"><span>Remove NSFW channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>removesplash</span></div>
+<div class="command-description-_Qpat"><span>Remove splash screen from channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>roleall</span></div>
+<div class="command-description-_Qpat"><span>Give a role to all members</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>selfpurge</span></div>
+<div class="command-description-_Qpat"><span>Delete 100 of your own messages</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>setnsfw</span></div>
+<div class="command-description-_Qpat"><span>Set NSFW channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>setupjail</span></div>
+<div class="command-description-_Qpat"><span>Sets up the jail role and channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>setupmod</span></div>
+<div class="command-description-_Qpat"><span>Setup moderation settings for the server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>slowmode</span></div>
+<div class="command-description-_Qpat"><span>Set the slowmode of a channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>striproles</span></div>
+<div class="command-description-_Qpat"><span>Strip all of a user's roles</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>tempban</span></div>
+<div class="command-description-_Qpat"><span>Temporarily bans a user</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>topic</span></div>
+<div class="command-description-_Qpat"><span>Set the channel topic</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>unban</span></div>
+<div class="command-description-_Qpat"><span>Unban a user</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>unbanall</span></div>
+<div class="command-description-_Qpat"><span>Unban all members in the server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>unhidechannel</span></div>
+<div class="command-description-_Qpat"><span>Unhide the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>unjail</span></div>
+<div class="command-description-_Qpat"><span>Unjails a mentioned user</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>unlock</span></div>
+<div class="command-description-_Qpat"><span>Unlock the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>unmute</span></div>
+<div class="command-description-_Qpat"><span>Unmute a specific user in the channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>unpinmessage</span></div>
+<div class="command-description-_Qpat"><span>Unpin a message</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>vanityuses</span></div>
+<div class="command-description-_Qpat"><span>Check how many uses your vanity has</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>warn</span></div>
+<div class="command-description-_Qpat"><span>Warn a server member.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>warnings</span></div>
+<div class="command-description-_Qpat"><span>View warnings of a server member.</span></div>
+</div>
+</div></div><div class="table-dD95W" id="economy">
+<div class="table-header-21_bM"><span>Economy</span></div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>balance</span></div>
+<div class="command-description-_Qpat"><span>Check your balance and bank account</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>coinflip</span></div>
+<div class="command-description-_Qpat"><span>Flip a coin for a chance to win or lose.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>deposit</span></div>
+<div class="command-description-_Qpat"><span>Deposit money from your balance to your bank account</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>fish</span></div>
+<div class="command-description-_Qpat"><span>Go fishing and catch some fish!</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>hunt</span></div>
+<div class="command-description-_Qpat"><span>Go hunting and catch some animals</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>sell</span></div>
+<div class="command-description-_Qpat"><span>Sell your caught fish or hunted animals for money</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>withdrawal</span></div>
+<div class="command-description-_Qpat"><span>Withdraw money from your bank account to your balance</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>work</span></div>
+<div class="command-description-_Qpat"><span>Work to earn coins.</span></div>
+</div>
+</div></div><div class="table-dD95W" id="fun">
+<div class="table-header-21_bM"><span>Fun</span></div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>divorce</span></div>
+<div class="command-description-_Qpat"><span>Divorce your partner</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>gossipify</span></div>
+<div class="command-description-_Qpat"><span>Gossipify text</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>joke</span></div>
+<div class="command-description-_Qpat"><span>Get a random joke</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>marriage</span></div>
+<div class="command-description-_Qpat"><span>See who a user is married to</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>marry</span></div>
+<div class="command-description-_Qpat"><span>Marry a server member</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>penis</span></div>
+<div class="command-description-_Qpat"><span>Check the size of a mentioned user's imaginary penis.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>randomnumber</span></div>
+<div class="command-description-_Qpat"><span>Generate a random number</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>uwuify</span></div>
+<div class="command-description-_Qpat"><span>Uwuify a string of text</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>vape</span></div>
+<div class="command-description-_Qpat"><span>Hit the vape</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>caption</span></div>
+<div class="command-description-_Qpat"><span>Adds a caption to an image</span></div>
+</div>
+</div></div><div class="table-dD95W" id="information">
+<div class="table-header-21_bM"><span>Information</span></div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>about</span></div>
+<div class="command-description-_Qpat"><span>Shows information about the bo</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>avatar</span></div>
+<div class="command-description-_Qpat"><span>View a user's avatar</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>banner</span></div>
+<div class="command-description-_Qpat"><span>View a user's banner</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>checkvanity</span></div>
+<div class="command-description-_Qpat"><span>Check if a vanity URL is available</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>faq</span></div>
+<div class="command-description-_Qpat"><span>Shows the FAQ of the bot</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>firstmembers</span></div>
+<div class="command-description-_Qpat"><span>Shows the first members to join the server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>help</span></div>
+<div class="command-description-_Qpat"><span>Displays information about a command/module</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>inrole</span></div>
+<div class="command-description-_Qpat"><span>Check the members in a role</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>invite</span></div>
+<div class="command-description-_Qpat"><span>Get the invite link for the bot.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>invites</span></div>
+<div class="command-description-_Qpat"><span>Shows all the server's invites</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>iplookup</span></div>
+<div class="command-description-_Qpat"><span>Lookup information about an IP address</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>joinposition</span></div>
+<div class="command-description-_Qpat"><span>See what # member you were</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>membercount</span></div>
+<div class="command-description-_Qpat"><span>View the server's member count</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>modules</span></div>
+<div class="command-description-_Qpat"><span>List all modules</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>namehistory</span></div>
+<div class="command-description-_Qpat"><span>View the name history of a user</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>oldestmembers</span></div>
+<div class="command-description-_Qpat"><span>Shows the oldest members in the server.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>ping</span></div>
+<div class="command-description-_Qpat"><span>Get the bot's latency to discord</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>recentjoins</span></div>
+<div class="command-description-_Qpat"><span>Shows the recent members that joined the server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>roleinfo</span></div>
+<div class="command-description-_Qpat"><span>Get information about a role</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>roles</span></div>
+<div class="command-description-_Qpat"><span>Shows all roles in the server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>serverbanner</span></div>
+<div class="command-description-_Qpat"><span>Show the server banner.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>servericon</span></div>
+<div class="command-description-_Qpat"><span>Show the server icon.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>serverinfo</span></div>
+<div class="command-description-_Qpat"><span>Return server information</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>serversplash</span></div>
+<div class="command-description-_Qpat"><span>Show the server splash.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>status</span></div>
+<div class="command-description-_Qpat"><span>Shows the status of the bot</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>subcommands</span></div>
+<div class="command-description-_Qpat"><span>Shows the subcommands of a command</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>support</span></div>
+<div class="command-description-_Qpat"><span>Shows the support server of the bot</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>uptime</span></div>
+<div class="command-description-_Qpat"><span>Shows bot uptime.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>usage</span></div>
+<div class="command-description-_Qpat"><span>Shows the usage of a command</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>userinfo</span></div>
+<div class="command-description-_Qpat"><span>Get information about a user</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>variables</span></div>
+<div class="command-description-_Qpat"><span>View the bot's variables</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>clearnames</span></div>
+<div class="command-description-_Qpat"><span>Clears your name history</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>jumbo</span></div>
+<div class="command-description-_Qpat"><span>Enlarge an emoji</span></div>
+</div>
+</div></div><div class="table-dD95W" id="lastfm">
+<div class="table-header-21_bM"><span>Lastfm</span></div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>lastfm</span></div>
+<div class="command-description-_Qpat"><span>Interact with your music</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>nowplaying</span></div>
+<div class="command-description-_Qpat"><span>Shows your currently playing song</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>recent</span></div>
+<div class="command-description-_Qpat"><span>Shows your most recent tracks</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>recommend</span></div>
+<div class="command-description-_Qpat"><span>Recommend a song based on your LastFM history</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>topalbums</span></div>
+<div class="command-description-_Qpat"><span>View your top albums</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>topartists</span></div>
+<div class="command-description-_Qpat"><span>View your top artists</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>toptracks</span></div>
+<div class="command-description-_Qpat"><span>View your top tracks</span></div>
+</div>
+</div></div><div class="table-dD95W" id="miscellaneous">
+<div class="table-header-21_bM"><span>Miscellaneous</span></div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>anime</span></div>
+<div class="command-description-_Qpat"><span>Search an Anime on Kitsu.io</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>appstore</span></div>
+<div class="command-description-_Qpat"><span>View an app on the app store</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>cashapp</span></div>
+<div class="command-description-_Qpat"><span>View a CashApp profile</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>dahood</span></div>
+<div class="command-description-_Qpat"><span>View dahood crosshair IDs</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>fortnite</span></div>
+<div class="command-description-_Qpat"><span>View fortnite related information</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>gemini</span></div>
+<div class="command-description-_Qpat"><span>Generate text with prompts</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>giphy</span></div>
+<div class="command-description-_Qpat"><span>Search Giphy for a GIF.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>github</span></div>
+<div class="command-description-_Qpat"><span>Get information from a github profile</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>imdb</span></div>
+<div class="command-description-_Qpat"><span>Get information on a series</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>instagram</span></div>
+<div class="command-description-_Qpat"><span>View an instagram profile</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>itunes</span></div>
+<div class="command-description-_Qpat"><span>Search iTunes for a song</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>playstation</span></div>
+<div class="command-description-_Qpat"><span>Search for a PlayStation profile</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>pokemon</span></div>
+<div class="command-description-_Qpat"><span>View information about a Pokémon</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>snapchat</span></div>
+<div class="command-description-_Qpat"><span>View a snapchat profile</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>soundcloud</span></div>
+<div class="command-description-_Qpat"><span>Search for a song on SoundCloud</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>spotify</span></div>
+<div class="command-description-_Qpat"><span>Search spotify for a song</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>steam</span></div>
+<div class="command-description-_Qpat"><span>Search Steam for a game</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>tiktok</span></div>
+<div class="command-description-_Qpat"><span>View a tiktok profile</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>twitter</span></div>
+<div class="command-description-_Qpat"><span>View a twitter profile</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>valorant</span></div>
+<div class="command-description-_Qpat"><span>Get information on a Valorant profile</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>xbox</span></div>
+<div class="command-description-_Qpat"><span>Gets profile information on the given Xbox gamertag</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>youtube</span></div>
+<div class="command-description-_Qpat"><span>Searches YouTube for video query</span></div>
+</div>
+</div></div><div class="table-dD95W" id="utility">
+<div class="table-header-21_bM"><span>Utility</span></div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>steal</span></div>
+<div class="command-description-_Qpat"><span>Steal an emoji</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>afk</span></div>
+<div class="command-description-_Qpat"><span>Set your status as AFK</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>birthday</span></div>
+<div class="command-description-_Qpat"><span>See how far your birthday is</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>compress</span></div>
+<div class="command-description-_Qpat"><span>Compresses the quality of the given image</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>createembed</span></div>
+<div class="command-description-_Qpat"><span>Create and send a custom embed message.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>editsnipe</span></div>
+<div class="command-description-_Qpat"><span>View recently edited messages</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>firstmessage</span></div>
+<div class="command-description-_Qpat"><span>View the channel's first message</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>image</span></div>
+<div class="command-description-_Qpat"><span>Search for an image on google</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>ocr</span></div>
+<div class="command-description-_Qpat"><span>Extract text from an image</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>pingall</span></div>
+<div class="command-description-_Qpat"><span>Pings everyone in the server with 30 users per message</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>poll</span></div>
+<div class="command-description-_Qpat"><span>Create a poll</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>reactionsnipe</span></div>
+<div class="command-description-_Qpat"><span>View a recently removed reaction</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>rotate</span></div>
+<div class="command-description-_Qpat"><span>Rotates the given image by the specified degrees</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>snipe</span></div>
+<div class="command-description-_Qpat"><span>View a recently deleted message</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>timezone</span></div>
+<div class="command-description-_Qpat"><span>View a location's timezone</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>translate</span></div>
+<div class="command-description-_Qpat"><span>Translate text between languages</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>urban</span></div>
+<div class="command-description-_Qpat"><span>Search </span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>weather</span></div>
+<div class="command-description-_Qpat"><span>Get the weather of a city</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>wikipedia</span></div>
+<div class="command-description-_Qpat"><span>Search wiki for a query</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>wolfram</span></div>
+<div class="command-description-_Qpat"><span>Get math answers</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>zip</span></div>
+<div class="command-description-_Qpat"><span>Download all emojis and send in zip</span></div>
+</div>
+</div></div><div class="table-dD95W" id="porn">
+<div class="table-header-21_bM"><span>Porn</span></div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>4k</span></div>
+<div class="command-description-_Qpat"><span>Sends porn in 4k</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>anal</span></div>
+<div class="command-description-_Qpat"><span>Sends a anal image</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>ass</span></div>
+<div class="command-description-_Qpat"><span>Sends a ass image in NSFW channels</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>boobs</span></div>
+<div class="command-description-_Qpat"><span>Sends an image of boobs</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>pussy</span></div>
+<div class="command-description-_Qpat"><span>Sends an image of a pussy</span></div>
+</div>
+</div></div><div class="table-dD95W" id="roleplay">
+<div class="table-header-21_bM"><span>Roleplay</span></div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>cuddle</span></div>
+<div class="command-description-_Qpat"><span>Cuddle with a member</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>feed</span></div>
+<div class="command-description-_Qpat"><span>Feed a member</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>hug</span></div>
+<div class="command-description-_Qpat"><span>Hug a member</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>kiss</span></div>
+<div class="command-description-_Qpat"><span>Kiss with a member</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>slap</span></div>
+<div class="command-description-_Qpat"><span>Slap a member</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>tickle</span></div>
+<div class="command-description-_Qpat"><span>Tickle a member</span></div>
+</div>
+</div></div><div class="table-dD95W" id="servers">
+<div class="table-header-21_bM"><span>Servers</span></div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>autobanner</span></div>
+<div class="command-description-_Qpat"><span>Automatically sends banners to a channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>autopfp</span></div>
+<div class="command-description-_Qpat"><span>Automatically sends pfps to a channel</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>autoreact</span></div>
+<div class="command-description-_Qpat"><span>Automatically react to messages</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>autorole</span></div>
+<div class="command-description-_Qpat"><span>Manage autoroles for the server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>goodbye</span></div>
+<div class="command-description-_Qpat"><span>Manage goodbye settings for the server.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>joindm</span></div>
+<div class="command-description-_Qpat"><span>Greet new members via DMs</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>pinterest</span></div>
+<div class="command-description-_Qpat"><span>Search pins or view a user's pins on Pinterest</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>prefix</span></div>
+<div class="command-description-_Qpat"><span>Set the bot prefix for this server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>stealbanner</span></div>
+<div class="command-description-_Qpat"><span>Steal the banner of another server</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>stealicon</span></div>
+<div class="command-description-_Qpat"><span>Steal the icon of another server using its invite</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>stealsplash</span></div>
+<div class="command-description-_Qpat"><span>Steal the splash of another server using its invite</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>ticket</span></div>
+<div class="command-description-_Qpat"><span>Set up ticketing system in a specific channel.</span></div>
+</div>
+</div><div class="command-1Ek3-">
+<div class="command-header-rwwom">
+<div class="command-name-2UNJV"><span>welcome</span></div>
+<div class="command-description-_Qpat"><span>Manage welcome settings for the server.</span></div>
+</div>
+</div></div></div>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>
