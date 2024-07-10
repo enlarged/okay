@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/embeds">
+    <link rel="stylesheet" type="text/css" href="css/embeds.css">
     <title>lain - embeds</title>
 </head>
 <body>
@@ -36,7 +36,7 @@
             const author = document.getElementById('author').value;
             const authorUrl = document.getElementById('authorUrl').value;
 
-            const embedOutput = `{embed}$v{title: ${title}}$v{description: ${description}}$v{color: ${color}}$v{image: ${image}}$v{thumbnail: ${thumbnail}}$v{footer: ${footer}}$v{author: ${author} && ${authorUrl}}`;
+            const embedOutput = `{title: ${title}}$v{description: ${description}}$v{color: ${color}}$v{image: ${image}}$v{thumbnail: ${thumbnail}}$v{footer: ${footer}}$v{author: ${author} && ${authorUrl}}`;
             document.getElementById('embedOutput').textContent = embedOutput;
         }
     </script>
