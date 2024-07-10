@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="5; url=https://www.example.com">
     <style>
         body {
             display: flex;
@@ -17,6 +16,7 @@
         }
         .message {
             text-align: center;
+            color: white;
         }
     </style>
 </head>
@@ -25,5 +25,13 @@
         <h1>Redirecting...</h1>
         <p>You will be redirected in a few seconds. If you are not redirected, <a href="https://discord.com/invite/okay">click here</a>.</p>
     </div>
+
+    <script>
+        function redirect() {
+            window.location.replace("https://www.example.com");
+        }
+
+        setTimeout(redirect, 5000);
+    </script>
 </body>
 </html>
