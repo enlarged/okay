@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://lains.win/avatar.png"/>
     <link rel="stylesheet" type="text/css" href="css/embeds.css">
     <title>lain - embeds</title>
 </head>
@@ -27,16 +28,25 @@
 
     <script>
         function generate() {
-            const title = document.getElementById('title').value;
-            const description = document.getElementById('description').value;
-            const color = document.getElementById('color').value;
-            const image = document.getElementById('image').value;
-            const thumbnail = document.getElementById('thumbnail').value;
-            const footer = document.getElementById('footer').value;
-            const author = document.getElementById('author').value;
-            const authorUrl = document.getElementById('authorUrl').value;
+            const title = document.getElementById('title').value.trim();
+            const description = document.getElementById('description').value.trim();
+            const color = document.getElementById('color').value.trim();
+            const image = document.getElementById('image').value.trim();
+            const thumbnail = document.getElementById('thumbnail').value.trim();
+            const footer = document.getElementById('footer').value.trim();
+            const author = document.getElementById('author').value.trim();
+            const authorUrl = document.getElementById('authorUrl').value.trim();
 
-            const embedOutput = `{title: ${title}}$v{description: ${description}}$v{color: ${color}}$v{image: ${image}}$v{thumbnail: ${thumbnail}}$v{footer: ${footer}}$v{author: ${author} && ${authorUrl}}`;
+            let embedOutput = '{';
+            if (title !== '') embedOutput += `$v{title: ${title}}`;
+            if (description !== '') embedOutput += `$v{description: ${description}}`;
+            if (color !== '') embedOutput += `$v{color: ${color}}`;
+            if (image !== '') embedOutput += `$v{image: ${image}}`;
+            if (thumbnail !== '') embedOutput += `$v{thumbnail: ${thumbnail}}`;
+            if (footer !== '') embedOutput += `$v{footer: ${footer}}`;
+            if (author !== '' && authorUrl !== '') embedOutput += `$v{author: ${author} && ${authorUrl}}`;
+            embedOutput += ' }';
+
             document.getElementById('embedOutput').textContent = embedOutput;
         }
     </script>
