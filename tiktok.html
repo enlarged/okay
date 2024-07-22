@@ -9,9 +9,13 @@
 <body>
     <div class="container">
         <div class="profile">
-            <img id="bot-avatar" src="https://lains.win/lain.png" alt="Bot Avatar">
-            <input type="text" id="username-input" placeholder="Enter TikTok username">
-            <button onclick="searchProfile()">Search</button>
+            <div class="avatar">
+                <img id="bot-avatar" src="https://lains.win/lain.png" alt="Bot Avatar">
+            </div>
+            <div class="search">
+                <input type="text" id="username-input" placeholder="Enter TikTok username">
+                <button onclick="searchProfile()">Search</button>
+            </div>
         </div>
         <div id="profile-info" class="profile-info">
         </div>
@@ -33,10 +37,12 @@
                         const { user, stats } = data.data;
 
                         const profileInfo = `
-                            <h2>${user.uniqueId}</h2>
-                            <p>Followers: ${stats.followerCount.toLocaleString()}</p>
-                            <p>Following: ${stats.followingCount.toLocaleString()}</p>
-                            <img src="${user.avatarLarger}" alt="${user.uniqueId}'s Avatar" style="width: 100px; height: 100px; border-radius: 50%;">
+                            <div class="profile-card">
+                                <h2>${user.uniqueId}</h2>
+                                <p>Followers: ${stats.followerCount.toLocaleString()}</p>
+                                <p>Following: ${stats.followingCount.toLocaleString()}</p>
+                                <img src="${user.avatarLarger}" alt="${user.uniqueId}'s Avatar">
+                            </div>
                         `;
 
                         document.getElementById('profile-info').innerHTML = profileInfo;
