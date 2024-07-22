@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lain - tiktok</title>
-<link rel="stylesheet" href="css/tiktok.css">
+    <link rel="stylesheet" href="css/tiktok.css">
 </head>
 <body>
     <div class="container">
@@ -18,6 +18,7 @@
             </div>
         </div>
         <div id="profile-info" class="profile-info">
+            <!-- Profile info will be displayed here -->
         </div>
     </div>
 
@@ -38,10 +39,13 @@
 
                         const profileInfo = `
                             <div class="profile-card">
-                                <h2>${user.uniqueId}</h2>
-                                <p>Followers: ${stats.followerCount.toLocaleString()}</p>
-                                <p>Following: ${stats.followingCount.toLocaleString()}</p>
-                                <img src="${user.avatarLarger}" alt="${user.uniqueId}'s Avatar">
+                                <div class="username">@${user.uniqueId}</div>
+                                <div class="stats">
+                                    <div>Likes: ${stats.heartCount}</div>
+                                    <div>Followers: ${stats.followerCount}</div>
+                                    <div>Following: ${stats.followingCount}</div>
+                                </div>
+                                <img src="${user.avatarLarger}" alt="${user.uniqueId}'s Avatar" class="profile-avatar">
                             </div>
                         `;
 
