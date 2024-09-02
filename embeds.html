@@ -5,27 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/embeds.css">
     <title>lain - embeds</title>
-    <style>
-        .color-picker {
-            position: relative;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid #000;
-            cursor: pointer;
-        }
-
-        .color-input {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -33,9 +12,7 @@
             <h2>Lain embed creator</h2>
             <input type="text" id="title" placeholder="Title">
             <textarea id="description" placeholder="Description"></textarea>
-            <div class="color-picker" id="colorPicker">
-                <input type="color" id="color" class="color-input" />
-            </div>
+            <input type="text" id="color" placeholder="Color">
             <input type="text" id="image" placeholder="Image Link">
             <input type="text" id="thumbnail" placeholder="Thumbnail Link">
             <input type="text" id="footer" placeholder="Footer">
@@ -61,21 +38,16 @@
 
             let embedOutput = '';
 
-            if (title !== '') embedOutput += `{title: ${title}}`;
-            if (description !== '') embedOutput += `$v{description: ${description}}`;
-            if (color !== '') embedOutput += `$v{color: ${color}}`;
-            if (image !== '') embedOutput += `$v{image: ${image}}`;
-            if (thumbnail !== '') embedOutput += `$v{thumbnail: ${thumbnail}}`;
-            if (footer !== '') embedOutput += `$v{footer: ${footer}}`;
-            if (author !== '' && authorUrl !== '') embedOutput += `$v{author: ${author} && ${authorUrl}}`;
+            if (title !== '') embedOutput += {title: ${title}};
+            if (description !== '') embedOutput += $v{description: ${description}};
+            if (color !== '') embedOutput += $v{color: ${color}};
+            if (image !== '') embedOutput += $v{image: ${image}};
+            if (thumbnail !== '') embedOutput += $v{thumbnail: ${thumbnail}};
+            if (footer !== '') embedOutput += $v{footer: ${footer}};
+            if (author !== '' && authorUrl !== '') embedOutput += $v{author: ${author} && ${authorUrl}};
 
             document.getElementById('embedOutput').textContent = embedOutput;
-
-            document.getElementById('colorPicker').style.backgroundColor = color;
         }
-        document.getElementById('color').addEventListener('input', function() {
-            document.getElementById('colorPicker').style.backgroundColor = this.value;
-        });
     </script>
 </body>
 </html>
