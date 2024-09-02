@@ -19,6 +19,7 @@
             <input type="text" id="author" placeholder="Author">
             <input type="text" id="authorUrl" placeholder="Author URL">
             <button onclick="generate()">Generate Embed</button>
+            <button onclick="clearEmbed()">Clear Embed</button>
         </div>
         <div class="embed-output" id="embedOutput"></div>
     </div>
@@ -33,7 +34,6 @@
             const footer = document.getElementById('footer').value.trim();
             const author = document.getElementById('author').value.trim();
             const authorUrl = document.getElementById('authorUrl').value.trim();
-
             let embedOutput = '';
 
             if (title !== '') embedOutput += `Title: ${title}\n`;
@@ -44,8 +44,11 @@
             if (footer !== '') embedOutput += `Footer: ${footer}\n`;
             if (author !== '' && authorUrl !== '') embedOutput += `Author: ${author} (URL: ${authorUrl})\n`;
 
-            // Display the output only if there's something to show
             document.getElementById('embedOutput').textContent = embedOutput.trim();
+        }
+
+        function clearEmbed() {
+            document.getElementById('embedOutput').textContent = '';
         }
     </script>
 </body>
