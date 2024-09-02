@@ -19,9 +19,10 @@
             <input type="text" id="author" placeholder="Author">
             <input type="text" id="authorUrl" placeholder="Author URL">
             <button onclick="generate()">Generate Embed</button>
-            <button onclick="clearEmbed()">Clear Embed</button>
         </div>
-        <div class="embed-output" id="embedOutput"></div>
+        <div class="embed-output" id="embedOutput">
+            {title: }$v{description: }$v{color: }$v{image: }$v{thumbnail: }$v{footer: }$v{author:  && }
+        </div>
     </div>
 
     <script>
@@ -34,21 +35,18 @@
             const footer = document.getElementById('footer').value.trim();
             const author = document.getElementById('author').value.trim();
             const authorUrl = document.getElementById('authorUrl').value.trim();
+
             let embedOutput = '';
 
-            if (title !== '') embedOutput += `Title: ${title}\n`;
-            if (description !== '') embedOutput += `Description: ${description}\n`;
-            if (color !== '') embedOutput += `Color: ${color}\n`;
-            if (image !== '') embedOutput += `Image: ${image}\n`;
-            if (thumbnail !== '') embedOutput += `Thumbnail: ${thumbnail}\n`;
-            if (footer !== '') embedOutput += `Footer: ${footer}\n`;
-            if (author !== '' && authorUrl !== '') embedOutput += `Author: ${author} (URL: ${authorUrl})\n`;
+            if (title !== '') embedOutput += {title: ${title}};
+            if (description !== '') embedOutput += $v{description: ${description}};
+            if (color !== '') embedOutput += $v{color: ${color}};
+            if (image !== '') embedOutput += $v{image: ${image}};
+            if (thumbnail !== '') embedOutput += $v{thumbnail: ${thumbnail}};
+            if (footer !== '') embedOutput += $v{footer: ${footer}};
+            if (author !== '' && authorUrl !== '') embedOutput += $v{author: ${author} && ${authorUrl}};
 
-            document.getElementById('embedOutput').textContent = embedOutput.trim();
-        }
-
-        function clearEmbed() {
-            document.getElementById('embedOutput').textContent = '';
+            document.getElementById('embedOutput').textContent = embedOutput;
         }
     </script>
 </body>
